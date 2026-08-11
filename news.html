@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News — A-STAR Lab</title>
+<meta name="description" content="News and milestones from the A-STAR Lab at Syracuse University: grants, papers and new members.">
+<link rel="icon" href="assets/logo-mark.png">
+<script>(function(){try{var t=localStorage.getItem('astar-theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap reveal">
+      <span class="label">News</span>
+      <h1>Grants, papers, <em>people</em>.</h1>
+      <p class="lede">A running record of what has happened in the lab since it opened in 2024.
+        Click an entry to expand it.</p>
+    </div>
+  </section>
+
+  <section class="section" id="timeline" data-rail="Timeline">
+    <div class="wrap">
+      <div class="filters reveal" data-filters="newsList">
+        <button class="chip" data-tag="all" aria-pressed="true">All</button>
+        <button class="chip" data-tag="grant" aria-pressed="false">Grants</button>
+        <button class="chip" data-tag="paper" aria-pressed="false">Papers</button>
+        <button class="chip" data-tag="lab" aria-pressed="false">Lab</button>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+          <input type="text" placeholder="Search news" aria-label="Search news">
+        </label>
+        <span class="count"></span>
+      </div>
+
+      <div class="idx reveal" id="newsList">
+        <div class="idx-row" data-tags="paper 2026" data-search="humanoid learns from workers CACAIE" data-group="News" data-kind="news" data-sub="Aug 2026">
+          <span class="when">Aug 2026</span>
+          <h3>A humanoid that learns construction skills from workers</h3>
+          <span class="tail">Paper<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>Yizhi Liu and Ph.D. student Yanxi Liu report a vision-based perception-and-action framework
+              that lets a humanoid observe skilled construction workers and reproduce their technique on
+              the task itself. Published in <em>Computer-Aided Civil and Infrastructure Engineering</em>.</p>
+            <div class="links"><a href="publications.html">See the publication</a><a href="research.html#areas">Area R1</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="grant 2026" data-search="NVIDIA academic grant program RTX Jetson" data-group="News" data-kind="news" data-sub="Jan 2026">
+          <span class="when">Jan 2026</span>
+          <h3>Selected for the NVIDIA Academic Grant Program</h3>
+          <span class="tail">Grant<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>The award supports autonomous infrastructure inspection with RTX PRO 6000 GPUs and Jetson
+              AGX Orin modules, which together carry the pipeline from GPU-accelerated simulation to
+              deployment on the robot.</p>
+            <div class="links"><a href="research.html#platforms">Platforms</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="grant 2025" data-search="NSF foundational research robotics aerial legged" data-group="News" data-kind="news" data-sub="Oct 2025">
+          <span class="when">Oct 2025</span>
+          <h3>NSF Foundational Research in Robotics award</h3>
+          <span class="tail">Grant<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>Supports development of an aerial-legged robot that takes off like a drone, lands on a
+              roof, then switches to legged locomotion. Camera, LiDAR and tactile sensing are fused so
+              the robot can inspect closely without a person on the ladder.</p>
+            <div class="links"><a href="research.html#areas">Area R2</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="lab 2026" data-search="new members join the lab" data-group="News" data-kind="news" data-sub="2026">
+          <span class="when">2026</span>
+          <h3>New members join the lab</h3>
+          <span class="tail">Lab<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>New students start work across humanoid collaboration, field robotics and robotic
+              inspection.</p>
+            <div class="links"><a href="people.html">Meet the team</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="lab 2024" data-search="A-STAR lab founded Syracuse" data-group="News" data-kind="news" data-sub="2024">
+          <span class="when">2024</span>
+          <h3>The A-STAR Lab opens at Syracuse University</h3>
+          <span class="tail">Lab<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>Yizhi Liu joins the Department of Civil and Environmental Engineering and founds the lab,
+              built around AI, sensing and robotics for construction work.</p>
+          </div></div>
+        </div>
+      </div>
+      <p class="no-match">Nothing matches that filter.</p>
+    </div>
+  </section>
+
+  <section class="section" id="contact" data-rail="Contact">
+    <div class="wrap">
+      <div class="band reveal">
+        <div class="inner">
+          <span class="label">Stay in touch</span>
+          <h2>Follow the work, or <em>come do some</em>.</h2>
+          <p>Write to us about collaborations, or about joining the lab as a student.</p>
+          <div class="hero-cta">
+            <a class="btn solid on-dark" href="join.html">Contact <span class="arw">&rarr;</span></a>
+            <a class="btn on-dark" href="research.html">Research</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js?v=1"></script>
+</body>
+</html>

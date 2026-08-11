@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-STAR Lab — AI-Driven Sensing, Technology and Robotics · Syracuse University</title>
+<meta name="description" content="The A-STAR Lab at Syracuse University builds sensing, machine learning and robotic systems for construction: human-robot collaboration, field robotics, worker safety, and infrastructure inspection.">
+<link rel="icon" href="assets/logo-mark.png">
+<script>(function(){try{var t=localStorage.getItem('astar-theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <!-- ============================ HERO ============================ -->
+  <section class="hero">
+    <canvas id="cloud" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <span class="hero-badge"><i></i>Syracuse University &middot; Civil &amp; Environmental Engineering</span>
+        <h1>Robots for the<br><em>construction</em> site.</h1>
+        <p class="lede">The <strong>A-STAR Lab</strong> builds sensing, machine learning and robotic
+          systems for construction. Our robots learn skilled motions by watching workers, move through
+          sites that were never mapped, and inspect structures people cannot safely reach.</p>
+        <div class="hero-cta">
+          <a class="btn solid" href="research.html">Research <span class="arw">&rarr;</span></a>
+          <a class="btn line" href="join.html">Join the lab</a>
+        </div>
+        <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
+      </div>
+
+      <figure class="plate reveal">
+        <img src="assets/logo-mark.png" alt="A-STAR Lab mark: a looping triangular form enclosing construction cranes">
+        <figcaption><span>A-STAR Lab</span><span>Est. 2024</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ OVERVIEW ============================ -->
+  <section class="section line-top" id="overview" data-rail="Overview">
+    <div class="wrap">
+      <div class="duo reveal">
+        <div class="sh-side"><span class="label">Overview</span></div>
+        <div class="duo-body">
+          <div>
+            <p class="fore">Construction is one of the least automated industries and one of the most
+              dangerous places to work. We build the machines and the software that <em>change both</em>.</p>
+          </div>
+          <div class="rest">
+            <p>The lab works across the full stack: perception and learning, hardware and field trials,
+              and the interfaces that let a person direct a machine on site. Projects begin from a task a
+              crew actually performs and end with a system tested outside the lab.</p>
+            <p>Our work draws on civil engineering, robotics and machine learning. Current platforms
+              include a humanoid learning construction skills from demonstration, an aerial-legged robot
+              for rooftop inspection, and wearable sensing that tracks how workers are coping.</p>
+          </div>
+        </div>
+      </div>
+
+      <dl class="specs stagger">
+        <div class="spec">
+          <dt>Established</dt>
+          <dd>2024</dd>
+          <span class="note">Syracuse, NY</span>
+        </div>
+        <div class="spec">
+          <dt>Research areas</dt>
+          <dd>Four</dd>
+          <span class="note">Collaboration &middot; Field &middot; Safety &middot; Inspection</span>
+        </div>
+        <div class="spec">
+          <dt>Support</dt>
+          <dd>NSF &amp; NVIDIA</dd>
+          <span class="note">Robotics + academic grant programs</span>
+        </div>
+        <div class="spec">
+          <dt>Recruiting</dt>
+          <dd>PhD, MS, Undergraduate</dd>
+          <span class="note">See the join page</span>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============================ RESEARCH ============================ -->
+  <section class="section line-top" id="research" data-rail="Research">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sh-side"><span class="label">Research</span></div>
+        <div>
+          <h2>Four areas, one <em>job site</em>.</h2>
+          <p>Hover or tab through the areas to see what each one covers.</p>
+          <a class="btn line sh-link" href="research.html">All research <span class="arw">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="explorer reveal" data-explorer="hover">
+        <div class="ex-list" role="tablist" aria-label="Research areas">
+          <button class="ex-tab" role="tab" aria-controls="a1" aria-selected="true">
+            <span class="ex-idx">R1</span>
+            <span class="ex-name">Human&ndash;robot collaboration</span>
+            <span class="ex-arw" aria-hidden="true">&rarr;</span>
+          </button>
+          <button class="ex-tab" role="tab" aria-controls="a2" aria-selected="false">
+            <span class="ex-idx">R2</span>
+            <span class="ex-name">Autonomous field robotics</span>
+            <span class="ex-arw" aria-hidden="true">&rarr;</span>
+          </button>
+          <button class="ex-tab" role="tab" aria-controls="a3" aria-selected="false">
+            <span class="ex-idx">R3</span>
+            <span class="ex-name">Worker safety and sensing</span>
+            <span class="ex-arw" aria-hidden="true">&rarr;</span>
+          </button>
+          <button class="ex-tab" role="tab" aria-controls="a4" aria-selected="false">
+            <span class="ex-idx">R4</span>
+            <span class="ex-name">Infrastructure inspection</span>
+            <span class="ex-arw" aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+
+        <div class="ex-stage">
+          <article class="ex-panel is-active" id="a1" role="tabpanel">
+            <span class="label bare">R1 / Collaboration</span>
+            <h3>Machines that work next to people</h3>
+            <p>A humanoid watches a skilled worker, extracts the structure of the motion, and reproduces
+              it on a real task. Language interfaces let a foreman assign work in plain speech instead of
+              writing code. Earlier work used brainwave signals for hands-free control.</p>
+            <div class="chips"><span>humanoids</span><span>learning from demonstration</span><span>LLM interfaces</span><span>shared autonomy</span></div>
+          </article>
+          <article class="ex-panel" id="a2" role="tabpanel">
+            <span class="label bare">R2 / Field</span>
+            <h3>Autonomy on ground that keeps changing</h3>
+            <p>Sites are cluttered, partly built and rarely mapped. We develop perception, planning and
+              control for robots that hold up in those conditions, including an aerial-legged platform
+              that flies to a structure, lands, and walks the last stretch.</p>
+            <div class="chips"><span>aerial-legged</span><span>SLAM</span><span>motion planning</span><span>sim-to-real</span></div>
+          </article>
+          <article class="ex-panel" id="a3" role="tabpanel">
+            <span class="label bare">R3 / Safety</span>
+            <h3>Catching risk before it becomes injury</h3>
+            <p>Computer vision flags fall hazards and unsafe postures. Wearable physiological sensing
+              estimates fatigue and cognitive load, so a robot can adapt to the person it is working
+              with rather than the other way round.</p>
+            <div class="chips"><span>fall hazards</span><span>ergonomics</span><span>pose estimation</span><span>physiological computing</span></div>
+          </article>
+          <article class="ex-panel" id="a4" role="tabpanel">
+            <span class="label bare">R4 / Inspection</span>
+            <h3>Reading a structure without climbing it</h3>
+            <p>Roofs, facades and elevated steel are slow and dangerous to inspect. We fuse vision and
+              depth with 3D reconstruction so a robot can survey hard-to-reach structures under poor
+              light, occlusion and clutter, and return a record someone can audit.</p>
+            <div class="chips"><span>multimodal sensing</span><span>3D reconstruction</span><span>defect detection</span><span>GPU pipelines</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ NEWS ============================ -->
+  <section class="section line-top" id="news" data-rail="News">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sh-side"><span class="label">Recent</span></div>
+        <div>
+          <h2>News</h2>
+          <p>Grants, papers and people. Click a line to read more.</p>
+          <a class="btn line sh-link" href="news.html">Full archive <span class="arw">&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="idx reveal">
+        <div class="idx-row" data-search="humanoid learning from workers" data-group="News" data-kind="news" data-sub="Aug 2026">
+          <span class="when">Aug 2026</span>
+          <h3>A humanoid that learns construction skills from workers</h3>
+          <span class="tail">Paper<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>A vision-based perception-and-action framework lets a humanoid observe skilled workers and
+              reproduce their technique on site. Published in <em>Computer-Aided Civil and Infrastructure
+              Engineering</em>.</p>
+            <div class="links"><a href="publications.html">Publication record</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-search="NVIDIA academic grant" data-group="News" data-kind="news" data-sub="Jan 2026">
+          <span class="when">Jan 2026</span>
+          <h3>Selected for the NVIDIA Academic Grant Program</h3>
+          <span class="tail">Grant<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>The award supports a GPU-accelerated pipeline for autonomous infrastructure inspection,
+              from simulation through field deployment, with RTX PRO 6000 and Jetson AGX Orin hardware.</p>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-search="NSF foundational research in robotics aerial legged" data-group="News" data-kind="news" data-sub="Oct 2025">
+          <span class="when">Oct 2025</span>
+          <h3>NSF Foundational Research in Robotics award</h3>
+          <span class="tail">Grant<span class="toggle" aria-hidden="true"></span></span>
+          <div class="idx-body"><div>
+            <p>Supports an aerial-legged robot that takes off like a drone, lands on a roof and switches
+              to legged locomotion, fusing camera, LiDAR and tactile sensing for close inspection.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ JOIN ============================ -->
+  <section class="section" id="join" data-rail="Join">
+    <div class="wrap">
+      <div class="band reveal">
+        <div class="inner">
+          <span class="label">Openings</span>
+          <h2>We are looking for people who want to put robots on <em>real</em> sites.</h2>
+          <p>Funded PhD positions, MS thesis projects and undergraduate research assistantships.
+            Collaborators and prospective postdocs are welcome to write as well.</p>
+          <div class="hero-cta">
+            <a class="btn solid on-dark" href="join.html">How to join <span class="arw">&rarr;</span></a>
+            <a class="btn on-dark" href="people.html">Meet the team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js?v=1"></script>
+</body>
+</html>

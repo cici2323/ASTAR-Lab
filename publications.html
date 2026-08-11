@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications — A-STAR Lab</title>
+<meta name="description" content="Selected publications from the A-STAR Lab at Syracuse University on construction robotics, human-robot collaboration and physiological sensing.">
+<link rel="icon" href="assets/logo-mark.png">
+<script>(function(){try{var t=localStorage.getItem('astar-theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css?v=1">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main>
+  <section class="page-head">
+    <div class="wrap reveal">
+      <span class="label">Publications</span>
+      <h1>Selected work</h1>
+      <p class="lede">Filter by area or search the list. Click any entry to see authors, venue and notes.
+        The complete record lives on the PI's
+        <a href="https://scholar.google.com/citations?user=w91CAdkAAAAJ&hl=en" target="_blank" rel="noopener" class="ext">Google Scholar</a> page.</p>
+    </div>
+  </section>
+
+  <section class="section" id="papers" data-rail="Papers">
+    <div class="wrap">
+      <div class="filters reveal" data-filters="pubList">
+        <button class="chip" data-tag="all" aria-pressed="true">All</button>
+        <button class="chip" data-tag="hrc" aria-pressed="false">Collaboration</button>
+        <button class="chip" data-tag="safety" aria-pressed="false">Safety &amp; sensing</button>
+        <button class="chip" data-tag="methods" aria-pressed="false">Methods</button>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+          <input type="text" placeholder="Search titles, authors, venues" aria-label="Search publications">
+        </label>
+        <span class="count"></span>
+      </div>
+
+      <div class="idx reveal" id="pubList">
+        <div class="idx-row" data-tags="hrc 2026" data-search="humanoid perception action framework" data-group="Publications" data-kind="paper" data-sub="CACAIE, 2026">
+          <span class="when">2026</span>
+          <h3>A vision-based perception-and-action framework for humanoid robots learning construction
+            skills from workers <span class="todo">verify title</span></h3>
+          <span class="tail">Journal<span class="toggle" aria-hidden="true"></span></span>
+          <div class="sub"><b>Yizhi Liu</b>, Yanxi Liu</div>
+          <div class="idx-body"><div>
+            <p><em>Computer-Aided Civil and Infrastructure Engineering</em>. A humanoid observes skilled
+              construction motions and reproduces them on the corresponding task, closing the loop from
+              visual perception to physical action.</p>
+            <div class="chips"><span>humanoid</span><span>learning from demonstration</span><span>perception</span></div>
+            <div class="links"><a href="research.html#areas">Related area: R1</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="hrc 2025" data-search="large language model worker robot interaction" data-group="Publications" data-kind="paper" data-sub="2025">
+          <span class="when">2025</span>
+          <h3>Enhancing worker&ndash;robot interaction for construction task operation: a preliminary
+            study using large language model&ndash;based methods <span class="todo">verify venue</span></h3>
+          <span class="tail">Paper<span class="toggle" aria-hidden="true"></span></span>
+          <div class="sub">Y. Liu, et al.</div>
+          <div class="idx-body"><div>
+            <p>Language-model interfaces for assigning and correcting construction tasks, so an operator
+              can direct a robot without writing code.</p>
+            <div class="chips"><span>LLM</span><span>worker&ndash;robot interaction</span></div>
+            <div class="links"><a href="research.html#areas">Related area: R1</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="safety 2022" data-search="GAN physiological computing cognitive load" data-group="Publications" data-kind="paper" data-sub="Can. J. Civ. Eng., 2022">
+          <span class="when">2022</span>
+          <h3>Robotic sensing and perception in construction: a GAN-based physiological computing
+            mechanism to enable robots to perceive workers' cognitive load</h3>
+          <span class="tail">Journal<span class="toggle" aria-hidden="true"></span></span>
+          <div class="sub">Y. Liu, A. Ojha, S. Shayesteh, H. Jebelli</div>
+          <div class="idx-body"><div>
+            <p><em>Canadian Journal of Civil Engineering</em>. Generative modelling of physiological
+              signals lets a robot estimate how loaded its human partner is, and adapt instead of pushing
+              on.</p>
+            <div class="chips"><span>physiological computing</span><span>GAN</span><span>cognitive load</span></div>
+            <div class="links"><a href="research.html#areas">Related area: R3</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="hrc safety 2021" data-search="brainwave driven human robot collaboration" data-group="Publications" data-kind="paper" data-sub="Automation in Construction, 2021">
+          <span class="when">2021</span>
+          <h3>Brainwave-driven human&ndash;robot collaboration in construction</h3>
+          <span class="tail">Journal<span class="toggle" aria-hidden="true"></span></span>
+          <div class="sub">Y. Liu, M. Habibnezhad, H. Jebelli</div>
+          <div class="idx-body"><div>
+            <p><em>Automation in Construction</em>, 124, 103556. Hands-free control of a construction
+              robot from EEG signals, for situations where a worker's hands and attention are already
+              committed.</p>
+            <div class="chips"><span>EEG</span><span>hands-free control</span><span>shared autonomy</span></div>
+            <div class="links"><a href="research.html#areas">Related areas: R1, R3</a></div>
+          </div></div>
+        </div>
+
+        <div class="idx-row" data-tags="safety methods 2021" data-search="dependent component analysis EEG ocular artifact" data-group="Publications" data-kind="paper" data-sub="ASCE JCEM, 2021">
+          <span class="when">2021</span>
+          <h3>Paving the way for future EEG studies in construction: dependent component analysis for
+            automatic ocular artifact removal from brainwave signals</h3>
+          <span class="tail">Journal<span class="toggle" aria-hidden="true"></span></span>
+          <div class="sub">Y. Liu, M. Habibnezhad, S. Shayesteh, H. Jebelli, S. Lee</div>
+          <div class="idx-body"><div>
+            <p><em>Journal of Construction Engineering and Management</em> (ASCE). A signal-processing
+              method that removes eye-movement artifacts from field EEG automatically, making wearable
+              brain sensing usable outside a quiet lab.</p>
+            <div class="chips"><span>EEG</span><span>signal processing</span><span>field data</span></div>
+            <div class="links"><a href="research.html#areas">Related area: R3</a></div>
+          </div></div>
+        </div>
+      </div>
+      <p class="no-match">No entry matches that filter.</p>
+
+      <p class="sub" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--faint)">
+        Entries marked <span class="todo">verify</span> still need a final title or venue check before
+        this page is made public.</p>
+    </div>
+  </section>
+
+  <section class="section" id="collaborate" data-rail="Collaborate">
+    <div class="wrap">
+      <div class="band reveal">
+        <div class="inner">
+          <span class="label">Collaborate</span>
+          <h2>Interested in the data, the code, or the <em>next</em> paper?</h2>
+          <p>We are glad to hear from researchers and industry partners working on the same problems.</p>
+          <div class="hero-cta">
+            <a class="btn solid on-dark" href="join.html">Get in touch <span class="arw">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/site.js?v=1"></script>
+</body>
+</html>
