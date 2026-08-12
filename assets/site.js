@@ -10,7 +10,7 @@ var SITE = {
   // Nav order = display order. cta:true renders as the outlined button.
   nav: [
     { href: "index.html", label: "Home" },
-    { href: "research.html", label: "Research" },
+    // { href: "research.html", label: "Research" },
     { href: "people.html", label: "People" },
     { href: "publications.html", label: "Publications" },
     { href: "news.html", label: "News" },
