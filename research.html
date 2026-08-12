@@ -1,295 +1,521 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Research — A-STAR Lab</title>
-<meta name="description" content="A-STAR Lab research: human-robot collaboration, autonomous field robotics, worker safety and sensing, and infrastructure inspection for construction.">
-<link rel="icon" href="assets/logo-mark.png">
-<script>(function(){try{var t=localStorage.getItem('astar-theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=1">
-</head>
-<body>
-<div id="site-header"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research — A-STAR Lab</title>
+    <meta
+      name="description"
+      content="A-STAR Lab research: human-robot collaboration, autonomous field robotics, worker safety and sensing, and infrastructure inspection for construction."
+    />
+    <link rel="icon" href="assets/logo-mark.png" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("astar-theme");
+          if (!t) {
+            t = matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          if (t === "dark")
+            document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css?v=1" />
+  </head>
+  <body>
+    <div id="site-header"></div>
 
-<main>
-  <section class="page-head">
-    <div class="wrap reveal">
-      <span class="label">Research</span>
-      <h1>What we build, and <em>why</em> it has to work outdoors.</h1>
-      <p class="lede">Four connected areas, from robots that share a task with a crew to robots that
-        inspect what nobody should have to climb. Every project is measured against real site
-        conditions: clutter, weather, bad light, and a schedule that does not wait.</p>
-    </div>
-  </section>
+    <main>
+      <section class="page-head">
+        <div class="wrap reveal">
+          <span class="label">Research</span>
+          <h1>What we build, and <em>why</em> it has to work outdoors.</h1>
+          <p class="lede">
+            Four connected areas, from robots that share a task with a crew to
+            robots that inspect what nobody should have to climb. Every project
+            is measured against real site conditions: clutter, weather, bad
+            light, and a schedule that does not wait.
+          </p>
+        </div>
+      </section>
 
-  <!-- ============================ AREAS ============================ -->
-  <section class="section" id="areas" data-rail="Areas">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sh-side"><span class="label">Areas</span></div>
-        <div>
-          <h2>Select an area</h2>
-          <p>Use the list, or the arrow keys once a row has focus.</p>
-        </div>
-      </div>
-
-      <div class="explorer reveal" data-explorer="click">
-        <div class="ex-list" role="tablist" aria-label="Research areas">
-          <button class="ex-tab" role="tab" aria-controls="t1" aria-selected="true">
-            <span class="ex-idx">R1</span>
-            <span class="ex-name">Human&ndash;robot collaboration</span>
-            <span class="ex-arw" aria-hidden="true">&rarr;</span>
-          </button>
-          <button class="ex-tab" role="tab" aria-controls="t2" aria-selected="false">
-            <span class="ex-idx">R2</span>
-            <span class="ex-name">Autonomous field robotics</span>
-            <span class="ex-arw" aria-hidden="true">&rarr;</span>
-          </button>
-          <button class="ex-tab" role="tab" aria-controls="t3" aria-selected="false">
-            <span class="ex-idx">R3</span>
-            <span class="ex-name">Worker safety and sensing</span>
-            <span class="ex-arw" aria-hidden="true">&rarr;</span>
-          </button>
-          <button class="ex-tab" role="tab" aria-controls="t4" aria-selected="false">
-            <span class="ex-idx">R4</span>
-            <span class="ex-name">Infrastructure inspection</span>
-            <span class="ex-arw" aria-hidden="true">&rarr;</span>
-          </button>
-        </div>
-
-        <div class="ex-stage">
-          <!-- R1 -->
-          <article class="ex-panel is-active" id="t1" role="tabpanel">
-            <figure class="ex-fig">
-              <span class="fig-tag">R1 / demonstration &rarr; action</span>
-              <svg viewBox="0 0 460 190" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" role="img" aria-label="Diagram: a worker demonstrates a motion and a robot reproduces it">
-                <path class="fa" d="M20 168h420"/>
-                <g class="fa"><path d="M40 168v-6M100 168v-6M160 168v-6M220 168v-6M280 168v-6M340 168v-6M400 168v-6"/></g>
-                <!-- worker -->
-                <circle cx="112" cy="60" r="9"/>
-                <path d="M112 69v46M112 84l28-10M112 84l-22 12M112 115l-14 41M112 115l16 41"/>
-                <!-- perception box -->
-                <g class="ac dash" stroke-width="1"><rect x="76" y="40" width="74" height="130" rx="3"/></g>
-                <g class="acf"><rect x="76" y="40" width="9" height="1.6"/><rect x="141" y="40" width="9" height="1.6"/></g>
-                <!-- robot -->
-                <rect x="300" y="48" width="24" height="20" rx="5"/>
-                <path d="M306 56h12" class="ac"/>
-                <path d="M312 68v46M312 84l-28-10M312 84l22 12M312 114l-14 42M312 114l16 42"/>
-                <!-- transfer arc -->
-                <path class="ac dash" d="M148 72C190 24 246 24 288 72"/>
-                <circle class="acf blip" cx="190" cy="44" r="2.6"/>
-                <circle class="acf blip" cx="218" cy="38" r="2.6" style="animation-delay:.5s"/>
-                <circle class="acf blip" cx="246" cy="44" r="2.6" style="animation-delay:1s"/>
-                <!-- shared object -->
-                <path class="fa" d="M196 128h64v14h-64z"/>
-                <path class="ac" d="M140 74l50 46M334 96l-64 30"/>
-              </svg>
-            </figure>
-            <span class="label bare">R1</span>
-            <h3>Human&ndash;robot collaboration</h3>
-            <p>We build humanoids and mobile manipulators that work alongside a crew instead of replacing
-              it. The current focus is a vision-based perception-and-action framework: the robot watches a
-              skilled worker, recovers the structure of the motion, and reproduces it on the real task.</p>
-            <p>On top of that sits the interface. Large language models let someone assign and correct work
-              in plain language, and earlier work in the group used brainwave signals for hands-free
-              control when a worker's hands were already busy.</p>
-            <div class="chips"><span>humanoids</span><span>learning from demonstration</span><span>LLM interfaces</span><span>brain&ndash;computer interface</span><span>shared autonomy</span></div>
-          </article>
-
-          <!-- R2 -->
-          <article class="ex-panel" id="t2" role="tabpanel">
-            <figure class="ex-fig">
-              <span class="fig-tag">R2 / fly, land, walk</span>
-              <svg viewBox="0 0 460 190" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" role="img" aria-label="Diagram: an aerial-legged robot flies over terrain, lands on a structure and walks">
-                <!-- terrain + structure -->
-                <path class="fa" d="M20 168l60-6 54 8 40-38h86l30 34h150"/>
-                <path class="fa" d="M220 132V96h56v36"/>
-                <g class="fa"><path d="M232 122h10M252 122h10M232 108h10M252 108h10"/></g>
-                <!-- flight path -->
-                <path class="ac dash" d="M34 44C90 26 150 44 208 78"/>
-                <circle class="acf" cx="34" cy="44" r="2.4"/>
-                <circle class="acf" cx="120" cy="34" r="2.4"/>
-                <circle class="acf" cx="208" cy="78" r="2.4"/>
-                <!-- quadrotor -->
-                <g><path d="M74 46h44M84 46v-7M108 46v-7"/><ellipse cx="84" cy="37" rx="13" ry="3.4"/><ellipse cx="108" cy="37" rx="13" ry="3.4"/><rect x="88" y="46" width="16" height="9" rx="2"/></g>
-                <!-- legged mode on structure -->
-                <g><rect x="228" y="72" width="40" height="14" rx="3"/><path d="M234 86l-8 12 6 10M262 86l8 12-6 10"/><path class="ac" d="M268 79h10"/></g>
-                <!-- sensing fan -->
-                <g class="ac dash" stroke-width=".9"><path d="M280 80l84 26M280 80l88 4M280 80l80-22"/></g>
-                <g class="acf"><circle cx="364" cy="106" r="2"/><circle cx="368" cy="84" r="2"/><circle cx="360" cy="58" r="2"/></g>
-                <path class="fa" d="M330 168V44h86"/>
-              </svg>
-            </figure>
-            <span class="label bare">R2</span>
-            <h3>Autonomous field robotics</h3>
-            <p>A job site is cluttered, half-built and rarely mapped, which is exactly where most mobile
-              robots stop working. We develop perception, planning and control that survive those
-              conditions, and we validate in simulation before taking hardware outside.</p>
-            <p>The flagship platform is aerial-legged: it takes off like a drone, lands on a structure,
-              then switches to legged locomotion to cover the last few metres where flight is unsafe or
-              too imprecise.</p>
-            <div class="chips"><span>aerial-legged</span><span>SLAM</span><span>motion planning</span><span>sim-to-real</span><span>onboard compute</span></div>
-          </article>
-
-          <!-- R3 -->
-          <article class="ex-panel" id="t3" role="tabpanel">
-            <figure class="ex-fig">
-              <span class="fig-tag">R3 / posture + physiology</span>
-              <svg viewBox="0 0 460 190" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" role="img" aria-label="Diagram: pose estimation on a worker alongside a physiological signal trace">
-                <!-- pose skeleton -->
-                <g>
-                  <circle cx="120" cy="44" r="9"/>
-                  <path d="M120 53v16M100 74h40M120 69v42M104 111h32M104 111l-8 46M136 111l10 46M100 74l-16 30M140 74l18 26"/>
-                </g>
-                <g class="acf"><circle cx="100" cy="74" r="3"/><circle cx="140" cy="74" r="3"/><circle cx="104" cy="111" r="3"/><circle cx="136" cy="111" r="3"/><circle cx="84" cy="104" r="3"/><circle cx="158" cy="100" r="3"/></g>
-                <!-- detection box -->
-                <g class="ac"><path d="M64 26h18M64 26v18M186 26h-18M186 26v18M64 170h18M64 170v-18M186 170h-18M186 170v-18"/></g>
-                <!-- hazard marker -->
-                <g class="ac dash" stroke-width=".9"><path d="M186 98h64"/></g>
-                <!-- signal trace -->
-                <path class="ac" d="M250 108h22l8-22 9 44 9-30 8 14h16l9-26 10 40 8-20h20l10-14 9 26 8-12h44"/>
-                <path class="fa" d="M250 140h190M250 76h190"/>
-                <g class="fa"><path d="M250 76v64M440 76v64"/></g>
-                <text x="250" y="66" fill="currentColor" stroke="none" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1.6" opacity=".55">COGNITIVE LOAD</text>
-              </svg>
-            </figure>
-            <span class="label bare">R3</span>
-            <h3>Worker safety and sensing</h3>
-            <p>Prevention is cheaper than response. Computer vision detects fall hazards and flags
-              postures that will cause injury over a season rather than in one moment. Wearable
-              physiological sensing estimates fatigue and cognitive load in real time.</p>
-            <p>The point is not surveillance. It is giving a robot enough awareness of the person beside
-              it to slow down, take over the heavy part, or ask before acting.</p>
-            <div class="chips"><span>fall-hazard detection</span><span>ergonomics</span><span>pose estimation</span><span>EEG</span><span>physiological computing</span></div>
-          </article>
-
-          <!-- R4 -->
-          <article class="ex-panel" id="t4" role="tabpanel">
-            <figure class="ex-fig">
-              <span class="fig-tag">R4 / scan &rarr; reconstruction</span>
-              <svg viewBox="0 0 460 190" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" role="img" aria-label="Diagram: a robot scans a facade and produces a 3D reconstruction">
-                <!-- structure -->
-                <path d="M250 168V54l60-24 60 24v114"/>
-                <path class="fa" d="M250 78h120M250 106h120M250 134h120M290 54v114M330 54v114"/>
-                <!-- robot -->
-                <g><rect x="66" y="112" width="34" height="14" rx="3"/><path d="M72 126l-6 12M94 126l6 12M74 112v-8M92 112v-8"/><ellipse cx="74" cy="102" rx="10" ry="2.8"/><ellipse cx="92" cy="102" rx="10" ry="2.8"/></g>
-                <!-- scan rays -->
-                <g class="ac dash" stroke-width=".9">
-                  <path d="M104 118L248 60"/><path d="M104 118L248 92"/><path d="M104 118L248 122"/><path d="M104 118L248 152"/>
-                </g>
-                <!-- returned points -->
-                <g class="acf">
-                  <circle cx="248" cy="60" r="2"/><circle cx="248" cy="92" r="2"/><circle cx="248" cy="122" r="2"/><circle cx="248" cy="152" r="2"/>
-                  <circle cx="262" cy="70" r="1.6" opacity=".7"/><circle cx="276" cy="84" r="1.6" opacity=".7"/><circle cx="292" cy="66" r="1.6" opacity=".7"/>
-                  <circle cx="306" cy="98" r="1.6" opacity=".7"/><circle cx="320" cy="128" r="1.6" opacity=".7"/><circle cx="336" cy="112" r="1.6" opacity=".7"/>
-                  <circle cx="352" cy="142" r="1.6" opacity=".7"/><circle cx="366" cy="90" r="1.6" opacity=".7"/>
-                </g>
-                <!-- defect -->
-                <g class="ac"><circle cx="330" cy="118" r="12" stroke-dasharray="3 4"/></g>
-                <!-- voxel inset -->
-                <g class="fa"><path d="M40 168v-26h34v26zM40 142l10-9h34l-10 9M74 142l10-9v26l-10 9"/></g>
-                <path class="fa" d="M20 168h420"/>
-              </svg>
-            </figure>
-            <span class="label bare">R4</span>
-            <h3>Infrastructure inspection</h3>
-            <p>Inspecting roofs, facades and elevated steel puts people on ladders and ropes for hours.
-              We fuse vision, depth and other modalities with 3D reconstruction so a robot can cover the
-              structure instead, including the parts that are dark, occluded or awkward to reach.</p>
-            <p>The output matters as much as the autonomy: a reconstruction and a defect record that an
-              engineer can check, compare against last year, and sign.</p>
-            <div class="chips"><span>multimodal sensing</span><span>3D reconstruction</span><span>defect detection</span><span>GPU pipelines</span><span>repeatable surveys</span></div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ PLATFORMS ============================ -->
-  <section class="section line-top" id="platforms" data-rail="Platforms">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="sh-side"><span class="label">Platforms</span></div>
-        <div>
-          <h2>Compute and hardware</h2>
-          <p>What the work actually runs on.</p>
-        </div>
-      </div>
-      <dl class="specs stagger" style="margin-top:0">
-        <div class="spec">
-          <dt>GPU compute</dt>
-          <dd>RTX PRO 6000</dd>
-          <span class="note">Training and reconstruction</span>
-        </div>
-        <div class="spec">
-          <dt>Edge compute</dt>
-          <dd>Jetson AGX Orin</dd>
-          <span class="note">Onboard perception</span>
-        </div>
-        <div class="spec">
-          <dt>Humanoid</dt>
-          <dd>Full-size platform <span class="todo">add model</span></dd>
-          <span class="note">Skill learning from demonstration</span>
-        </div>
-        <div class="spec">
-          <dt>Aerial-legged</dt>
-          <dd>In-house prototype</dd>
-          <span class="note">Flight plus legged locomotion</span>
-        </div>
-        <div class="spec">
-          <dt>Sensing</dt>
-          <dd>Vision, LiDAR, wearables</dd>
-          <span class="note">Site and worker instrumentation</span>
-        </div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- ============================ FUNDING ============================ -->
-  <section class="section line-top" id="funding" data-rail="Funding">
-    <div class="wrap">
-      <div class="duo reveal">
-        <div class="sh-side"><span class="label">Funding</span></div>
-        <div class="duo-body">
-          <div>
-            <p class="fore">Supported by the National Science Foundation and NVIDIA's Academic Grant
-              Program.</p>
+      <!-- ============================ AREAS ============================ -->
+      <section class="section" id="areas" data-rail="Areas">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <div class="sh-side"><span class="label">Areas</span></div>
+            <div>
+              <h2>Select an area</h2>
+              <p>Use the list, or the arrow keys once a row has focus.</p>
+            </div>
           </div>
-          <div class="rest">
-            <p>NSF Foundational Research in Robotics supports the aerial-legged inspection platform.
-              The NVIDIA award provides the GPU and edge hardware behind our simulation-to-deployment
-              pipeline.</p>
-            <p>Any opinions, findings and conclusions expressed on this site are those of the
-              investigators and do not necessarily reflect the views of the sponsors.</p>
+
+          <div class="explorer reveal" data-explorer="click">
+            <div class="ex-list" role="tablist" aria-label="Research areas">
+              <button
+                class="ex-tab"
+                role="tab"
+                aria-controls="t1"
+                aria-selected="true"
+              >
+                <span class="ex-idx">R1</span>
+                <span class="ex-name">Human&ndash;robot collaboration</span>
+                <span class="ex-arw" aria-hidden="true">&rarr;</span>
+              </button>
+              <button
+                class="ex-tab"
+                role="tab"
+                aria-controls="t2"
+                aria-selected="false"
+              >
+                <span class="ex-idx">R2</span>
+                <span class="ex-name">Autonomous field robotics</span>
+                <span class="ex-arw" aria-hidden="true">&rarr;</span>
+              </button>
+              <button
+                class="ex-tab"
+                role="tab"
+                aria-controls="t3"
+                aria-selected="false"
+              >
+                <span class="ex-idx">R3</span>
+                <span class="ex-name">Worker safety and sensing</span>
+                <span class="ex-arw" aria-hidden="true">&rarr;</span>
+              </button>
+              <button
+                class="ex-tab"
+                role="tab"
+                aria-controls="t4"
+                aria-selected="false"
+              >
+                <span class="ex-idx">R4</span>
+                <span class="ex-name">Infrastructure inspection</span>
+                <span class="ex-arw" aria-hidden="true">&rarr;</span>
+              </button>
+            </div>
+
+            <div class="ex-stage">
+              <!-- R1 -->
+              <article class="ex-panel is-active" id="t1" role="tabpanel">
+                <figure class="ex-fig">
+                  <span class="fig-tag">R1 / demonstration &rarr; action</span>
+                  <svg
+                    viewBox="0 0 460 190"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                    role="img"
+                    aria-label="Diagram: a worker demonstrates a motion and a robot reproduces it"
+                  >
+                    <path class="fa" d="M20 168h420" />
+                    <g class="fa">
+                      <path
+                        d="M40 168v-6M100 168v-6M160 168v-6M220 168v-6M280 168v-6M340 168v-6M400 168v-6"
+                      />
+                    </g>
+                    <!-- worker -->
+                    <circle cx="112" cy="60" r="9" />
+                    <path
+                      d="M112 69v46M112 84l28-10M112 84l-22 12M112 115l-14 41M112 115l16 41"
+                    />
+                    <!-- perception box -->
+                    <g class="ac dash" stroke-width="1">
+                      <rect x="76" y="40" width="74" height="130" rx="3" />
+                    </g>
+                    <g class="acf">
+                      <rect x="76" y="40" width="9" height="1.6" />
+                      <rect x="141" y="40" width="9" height="1.6" />
+                    </g>
+                    <!-- robot -->
+                    <rect x="300" y="48" width="24" height="20" rx="5" />
+                    <path d="M306 56h12" class="ac" />
+                    <path
+                      d="M312 68v46M312 84l-28-10M312 84l22 12M312 114l-14 42M312 114l16 42"
+                    />
+                    <!-- transfer arc -->
+                    <path class="ac dash" d="M148 72C190 24 246 24 288 72" />
+                    <circle class="acf blip" cx="190" cy="44" r="2.6" />
+                    <circle
+                      class="acf blip"
+                      cx="218"
+                      cy="38"
+                      r="2.6"
+                      style="animation-delay: 0.5s"
+                    />
+                    <circle
+                      class="acf blip"
+                      cx="246"
+                      cy="44"
+                      r="2.6"
+                      style="animation-delay: 1s"
+                    />
+                    <!-- shared object -->
+                    <path class="fa" d="M196 128h64v14h-64z" />
+                    <path class="ac" d="M140 74l50 46M334 96l-64 30" />
+                  </svg>
+                </figure>
+                <span class="label bare">R1</span>
+                <h3>Human&ndash;robot collaboration</h3>
+                <p>
+                  We build humanoids and mobile manipulators that work alongside
+                  a crew instead of replacing it. The current focus is a
+                  vision-based perception-and-action framework: the robot
+                  watches a skilled worker, recovers the structure of the
+                  motion, and reproduces it on the real task.
+                </p>
+                <p>
+                  On top of that sits the interface. Large language models let
+                  someone assign and correct work in plain language, and earlier
+                  work in the group used brainwave signals for hands-free
+                  control when a worker's hands were already busy.
+                </p>
+                <div class="chips">
+                  <span>humanoids</span><span>learning from demonstration</span
+                  ><span>LLM interfaces</span
+                  ><span>brain&ndash;computer interface</span
+                  ><span>shared autonomy</span>
+                </div>
+              </article>
+
+              <!-- R2 -->
+              <article class="ex-panel" id="t2" role="tabpanel">
+                <figure class="ex-fig">
+                  <span class="fig-tag">R2 / fly, land, walk</span>
+                  <svg
+                    viewBox="0 0 460 190"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                    role="img"
+                    aria-label="Diagram: an aerial-legged robot flies over terrain, lands on a structure and walks"
+                  >
+                    <!-- terrain + structure -->
+                    <path class="fa" d="M20 168l60-6 54 8 40-38h86l30 34h150" />
+                    <path class="fa" d="M220 132V96h56v36" />
+                    <g class="fa">
+                      <path d="M232 122h10M252 122h10M232 108h10M252 108h10" />
+                    </g>
+                    <!-- flight path -->
+                    <path class="ac dash" d="M34 44C90 26 150 44 208 78" />
+                    <circle class="acf" cx="34" cy="44" r="2.4" />
+                    <circle class="acf" cx="120" cy="34" r="2.4" />
+                    <circle class="acf" cx="208" cy="78" r="2.4" />
+                    <!-- quadrotor -->
+                    <g>
+                      <path d="M74 46h44M84 46v-7M108 46v-7" />
+                      <ellipse cx="84" cy="37" rx="13" ry="3.4" />
+                      <ellipse cx="108" cy="37" rx="13" ry="3.4" />
+                      <rect x="88" y="46" width="16" height="9" rx="2" />
+                    </g>
+                    <!-- legged mode on structure -->
+                    <g>
+                      <rect x="228" y="72" width="40" height="14" rx="3" />
+                      <path d="M234 86l-8 12 6 10M262 86l8 12-6 10" />
+                      <path class="ac" d="M268 79h10" />
+                    </g>
+                    <!-- sensing fan -->
+                    <g class="ac dash" stroke-width=".9">
+                      <path d="M280 80l84 26M280 80l88 4M280 80l80-22" />
+                    </g>
+                    <g class="acf">
+                      <circle cx="364" cy="106" r="2" />
+                      <circle cx="368" cy="84" r="2" />
+                      <circle cx="360" cy="58" r="2" />
+                    </g>
+                    <path class="fa" d="M330 168V44h86" />
+                  </svg>
+                </figure>
+                <span class="label bare">R2</span>
+                <h3>Autonomous field robotics</h3>
+                <p>
+                  A job site is cluttered, half-built and rarely mapped, which
+                  is exactly where most mobile robots stop working. We develop
+                  perception, planning and control that survive those
+                  conditions, and we validate in simulation before taking
+                  hardware outside.
+                </p>
+                <p>
+                  The flagship platform is aerial-legged: it takes off like a
+                  drone, lands on a structure, then switches to legged
+                  locomotion to cover the last few metres where flight is unsafe
+                  or too imprecise.
+                </p>
+                <div class="chips">
+                  <span>aerial-legged</span><span>SLAM</span
+                  ><span>motion planning</span><span>sim-to-real</span
+                  ><span>onboard compute</span>
+                </div>
+              </article>
+
+              <!-- R3 -->
+              <article class="ex-panel" id="t3" role="tabpanel">
+                <figure class="ex-fig">
+                  <span class="fig-tag">R3 / posture + physiology</span>
+                  <svg
+                    viewBox="0 0 460 190"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                    role="img"
+                    aria-label="Diagram: pose estimation on a worker alongside a physiological signal trace"
+                  >
+                    <!-- pose skeleton -->
+                    <g>
+                      <circle cx="120" cy="44" r="9" />
+                      <path
+                        d="M120 53v16M100 74h40M120 69v42M104 111h32M104 111l-8 46M136 111l10 46M100 74l-16 30M140 74l18 26"
+                      />
+                    </g>
+                    <g class="acf">
+                      <circle cx="100" cy="74" r="3" />
+                      <circle cx="140" cy="74" r="3" />
+                      <circle cx="104" cy="111" r="3" />
+                      <circle cx="136" cy="111" r="3" />
+                      <circle cx="84" cy="104" r="3" />
+                      <circle cx="158" cy="100" r="3" />
+                    </g>
+                    <!-- detection box -->
+                    <g class="ac">
+                      <path
+                        d="M64 26h18M64 26v18M186 26h-18M186 26v18M64 170h18M64 170v-18M186 170h-18M186 170v-18"
+                      />
+                    </g>
+                    <!-- hazard marker -->
+                    <g class="ac dash" stroke-width=".9">
+                      <path d="M186 98h64" />
+                    </g>
+                    <!-- signal trace -->
+                    <path
+                      class="ac"
+                      d="M250 108h22l8-22 9 44 9-30 8 14h16l9-26 10 40 8-20h20l10-14 9 26 8-12h44"
+                    />
+                    <path class="fa" d="M250 140h190M250 76h190" />
+                    <g class="fa"><path d="M250 76v64M440 76v64" /></g>
+                    <text
+                      x="250"
+                      y="66"
+                      fill="currentColor"
+                      stroke="none"
+                      font-family="IBM Plex Mono, monospace"
+                      font-size="9"
+                      letter-spacing="1.6"
+                      opacity=".55"
+                    >
+                      COGNITIVE LOAD
+                    </text>
+                  </svg>
+                </figure>
+                <span class="label bare">R3</span>
+                <h3>Worker safety and sensing</h3>
+                <p>
+                  Prevention is cheaper than response. Computer vision detects
+                  fall hazards and flags postures that will cause injury over a
+                  season rather than in one moment. Wearable physiological
+                  sensing estimates fatigue and cognitive load in real time.
+                </p>
+                <p>
+                  The point is not surveillance. It is giving a robot enough
+                  awareness of the person beside it to slow down, take over the
+                  heavy part, or ask before acting.
+                </p>
+                <div class="chips">
+                  <span>fall-hazard detection</span><span>ergonomics</span
+                  ><span>pose estimation</span><span>EEG</span
+                  ><span>physiological computing</span>
+                </div>
+              </article>
+
+              <!-- R4 -->
+              <article class="ex-panel" id="t4" role="tabpanel">
+                <figure class="ex-fig">
+                  <span class="fig-tag">R4 / scan &rarr; reconstruction</span>
+                  <svg
+                    viewBox="0 0 460 190"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.1"
+                    stroke-linecap="round"
+                    role="img"
+                    aria-label="Diagram: a robot scans a facade and produces a 3D reconstruction"
+                  >
+                    <!-- structure -->
+                    <path d="M250 168V54l60-24 60 24v114" />
+                    <path
+                      class="fa"
+                      d="M250 78h120M250 106h120M250 134h120M290 54v114M330 54v114"
+                    />
+                    <!-- robot -->
+                    <g>
+                      <rect x="66" y="112" width="34" height="14" rx="3" />
+                      <path d="M72 126l-6 12M94 126l6 12M74 112v-8M92 112v-8" />
+                      <ellipse cx="74" cy="102" rx="10" ry="2.8" />
+                      <ellipse cx="92" cy="102" rx="10" ry="2.8" />
+                    </g>
+                    <!-- scan rays -->
+                    <g class="ac dash" stroke-width=".9">
+                      <path d="M104 118L248 60" />
+                      <path d="M104 118L248 92" />
+                      <path d="M104 118L248 122" />
+                      <path d="M104 118L248 152" />
+                    </g>
+                    <!-- returned points -->
+                    <g class="acf">
+                      <circle cx="248" cy="60" r="2" />
+                      <circle cx="248" cy="92" r="2" />
+                      <circle cx="248" cy="122" r="2" />
+                      <circle cx="248" cy="152" r="2" />
+                      <circle cx="262" cy="70" r="1.6" opacity=".7" />
+                      <circle cx="276" cy="84" r="1.6" opacity=".7" />
+                      <circle cx="292" cy="66" r="1.6" opacity=".7" />
+                      <circle cx="306" cy="98" r="1.6" opacity=".7" />
+                      <circle cx="320" cy="128" r="1.6" opacity=".7" />
+                      <circle cx="336" cy="112" r="1.6" opacity=".7" />
+                      <circle cx="352" cy="142" r="1.6" opacity=".7" />
+                      <circle cx="366" cy="90" r="1.6" opacity=".7" />
+                    </g>
+                    <!-- defect -->
+                    <g class="ac">
+                      <circle cx="330" cy="118" r="12" stroke-dasharray="3 4" />
+                    </g>
+                    <!-- voxel inset -->
+                    <g class="fa">
+                      <path
+                        d="M40 168v-26h34v26zM40 142l10-9h34l-10 9M74 142l10-9v26l-10 9"
+                      />
+                    </g>
+                    <path class="fa" d="M20 168h420" />
+                  </svg>
+                </figure>
+                <span class="label bare">R4</span>
+                <h3>Infrastructure inspection</h3>
+                <p>
+                  Inspecting roofs, facades and elevated steel puts people on
+                  ladders and ropes for hours. We fuse vision, depth and other
+                  modalities with 3D reconstruction so a robot can cover the
+                  structure instead, including the parts that are dark, occluded
+                  or awkward to reach.
+                </p>
+                <p>
+                  The output matters as much as the autonomy: a reconstruction
+                  and a defect record that an engineer can check, compare
+                  against last year, and sign.
+                </p>
+                <div class="chips">
+                  <span>multimodal sensing</span><span>3D reconstruction</span
+                  ><span>defect detection</span><span>GPU pipelines</span
+                  ><span>repeatable surveys</span>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section" id="read" data-rail="Read">
-    <div class="wrap">
-      <div class="band reveal">
-        <div class="inner">
-          <span class="label">Read the work</span>
-          <h2>The papers behind each of these <em>four</em> areas.</h2>
-          <p>Peer-reviewed work on human&ndash;robot collaboration, physiological sensing and robotic
-            perception in construction.</p>
-          <div class="hero-cta">
-            <a class="btn solid on-dark" href="publications.html">Publications <span class="arw">&rarr;</span></a>
-            <a class="btn on-dark" href="join.html">Join the lab</a>
+      <!-- ============================ PLATFORMS ============================ -->
+      <section class="section line-top" id="platforms" data-rail="Platforms">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <div class="sh-side"><span class="label">Platforms</span></div>
+            <div>
+              <h2>Compute and hardware</h2>
+              <p>What the work actually runs on.</p>
+            </div>
+          </div>
+          <dl class="specs stagger" style="margin-top: 0">
+            <div class="spec">
+              <dt>GPU compute</dt>
+              <dd>RTX PRO 6000</dd>
+              <span class="note">Training and reconstruction</span>
+            </div>
+            <div class="spec">
+              <dt>Edge compute</dt>
+              <dd>Jetson AGX Orin</dd>
+              <span class="note">Onboard perception</span>
+            </div>
+            <div class="spec">
+              <dt>Humanoid</dt>
+              <dd>Full-size platform <span class="todo">add model</span></dd>
+              <span class="note">Skill learning from demonstration</span>
+            </div>
+            <div class="spec">
+              <dt>Aerial-legged</dt>
+              <dd>In-house prototype</dd>
+              <span class="note">Flight plus legged locomotion</span>
+            </div>
+            <div class="spec">
+              <dt>Sensing</dt>
+              <dd>Vision, LiDAR, wearables</dd>
+              <span class="note">Site and worker instrumentation</span>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============================ FUNDING ============================ -->
+      <section class="section line-top" id="funding" data-rail="Funding">
+        <div class="wrap">
+          <div class="duo reveal">
+            <div class="sh-side"><span class="label">Funding</span></div>
+            <div class="duo-body">
+              <div>
+                <p class="fore">
+                  Supported by the National Science Foundation and NVIDIA's
+                  Academic Grant Program.
+                </p>
+              </div>
+              <div class="rest">
+                <p>
+                  NSF Foundational Research in Robotics supports the
+                  aerial-legged inspection platform. The NVIDIA award provides
+                  the GPU and edge hardware behind our simulation-to-deployment
+                  pipeline.
+                </p>
+                <p>
+                  Any opinions, findings and conclusions expressed on this site
+                  are those of the investigators and do not necessarily reflect
+                  the views of the sponsors.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-</main>
+      </section>
 
-<div id="site-footer"></div>
-<script src="assets/site.js?v=1"></script>
-</body>
+      <section class="section" id="read" data-rail="Read">
+        <div class="wrap">
+          <div class="band reveal">
+            <div class="inner">
+              <span class="label">Read the work</span>
+              <h2>The papers behind each of these <em>four</em> areas.</h2>
+              <p>
+                Peer-reviewed work on human&ndash;robot collaboration,
+                physiological sensing and robotic perception in construction.
+              </p>
+              <div class="hero-cta">
+                <a class="btn solid on-dark" href="publications.html"
+                  >Publications <span class="arw">&rarr;</span></a
+                >
+                <a class="btn on-dark" href="join.html">Join the lab</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="assets/site.js?v=1"></script>
+  </body>
 </html>
