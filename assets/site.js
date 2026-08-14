@@ -699,6 +699,229 @@ var SITE = {
     });
   }
 
+  /* ----------------------------------------------------------------- photos */
+  /* A portrait whose file is missing (or misspelled) falls back to the
+     initials plate instead of showing a broken-image icon.                  */
+  function initPhotos() {
+    $$(".portrait img").forEach(function (im) {
+      function fail() { im.style.display = "none"; }
+      im.addEventListener("error", fail);
+      if (im.complete && im.naturalWidth === 0) fail();
+    });
+  }
+
+  /* ---------------------------------------------------------------- gallery */
+  /* Horizontal photo strip: auto-advances, pauses on hover or when the tab is
+     hidden, and can be driven with the arrows, the dots, or a swipe.        */
+  function initGallery() {
+    var g = $("[data-gallery]");
+    if (!g) return;
+
+    var track = $(".gal-track", g);
+    var items = $$(".gal-item", track);
+    var dotsHost = $(".gal-dots", g);
+    var playBtn = $('[data-gal="play"]', g);
+    if (!track || !items.length) return;
+
+    var DELAY = 4000;
+    var timer = null;
+    var playing = !reduce;
+
+    // a missing file shows the "add photo" placeholder instead of a broken icon
+    items.forEach(function (fig) {
+      var im = $("img", fig);
+      if (!im) return;
+      if (!im.getAttribute("src")) fig.classList.add("is-empty");
+      im.addEventListener("error", function () { fig.classList.add("is-empty"); });
+    });
+
+    // video slides: muted clips marked data-auto play only while on screen, so
+    // off-screen clips cost nothing. A clip the visitor starts with sound stops
+    // the carousel so it does not slide away mid-playback.
+    var vids = $$("video", track);
+    vids.forEach(function (v) {
+      v.addEventListener("play", function () { if (!v.muted) stop(); });
+      if (!v.hasAttribute("data-auto")) return;
+
+      // click (or Enter/Space) toggles this clip; a paused clip shows a play
+      // badge and stays paused even if you scroll it out of view and back
+      var fig = v.closest(".gal-item");
+      var badge = document.createElement("span");
+      badge.className = "gal-play";
+      badge.setAttribute("aria-hidden", "true");
+      v.parentNode.appendChild(badge);
+
+      v.tabIndex = 0;
+      v.setAttribute("role", "button");
+      v.setAttribute("aria-label", "Play or pause this clip");
+
+      function toggle(e) {
+        if (e) e.preventDefault();
+        if (v.paused) {
+          v.removeAttribute("data-user-paused");
+          var pr = v.play();
+          if (pr && pr.catch) pr.catch(function () {});
+        } else {
+          v.setAttribute("data-user-paused", "");
+          v.pause();
+        }
+      }
+      v.addEventListener("click", toggle);
+      badge.addEventListener("click", toggle);
+      v.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") toggle(e);
+      });
+      // shown until playback actually starts, so a clip still reads as a clip
+      // even where the browser refuses to autoplay it
+      fig.classList.add("clip-paused");
+      v.addEventListener("play", function () { fig.classList.remove("clip-paused"); });
+      v.addEventListener("pause", function () { fig.classList.add("clip-paused"); });
+    });
+    if (vids.length && "IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            var v = e.target;
+            if (!v.hasAttribute("data-auto")) return;
+            if (v.hasAttribute("data-user-paused")) return;
+            if (e.isIntersecting && !reduce) {
+              var pr = v.play();
+              if (pr && pr.catch) pr.catch(function () {});
+            } else {
+              v.pause();
+            }
+          });
+        },
+        { root: track, threshold: 0.45 }
+      );
+      vids.forEach(function (v) { vio.observe(v); });
+    }
+
+    // Indicator: a dash per slide is readable up to about a dozen; beyond that
+    // the row would overflow on a phone, so it becomes a "05 / 24" counter.
+    var dots = [];
+    var counter = null;
+    var MANY = items.length > 12;
+    if (dotsHost) {
+      if (MANY) {
+        dotsHost.classList.add("as-counter");
+        counter = document.createElement("span");
+        counter.className = "gal-count";
+        dotsHost.appendChild(counter);
+      } else {
+        items.forEach(function (_, n) {
+          var b = document.createElement("button");
+          b.className = "gal-dot";
+          b.type = "button";
+          b.setAttribute("aria-label", "Photo " + (n + 1));
+          b.addEventListener("click", function () { stop(); go(n); });
+          dotsHost.appendChild(b);
+          dots.push(b);
+        });
+      }
+    }
+
+    function maxScroll() {
+      return track.scrollWidth - track.clientWidth;
+    }
+    // photos have different widths, so each stop is read off the item itself
+    // (offsetLeft already includes the track padding, which snapping strips)
+    function posOf(i) {
+      var pad = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+      return Math.max(0, Math.min(items[i].offsetLeft - pad, maxScroll()));
+    }
+    function current() {
+      var x = track.scrollLeft,
+        best = 0,
+        bestD = Infinity;
+      for (var i = 0; i < items.length; i++) {
+        var d = Math.abs(posOf(i) - x);
+        if (d < bestD) { bestD = d; best = i; }
+      }
+      return best;
+    }
+    function go(n) {
+      var i = Math.max(0, Math.min(items.length - 1, n));
+      // no `behavior` here on purpose: some engines drop back-to-back smooth
+      // scroll requests. The animation comes from scroll-behavior in the CSS,
+      // which the reduced-motion media query turns off.
+      track.scrollTo({ left: posOf(i) });
+    }
+    function next() {
+      if (track.scrollLeft >= maxScroll() - 6) go(0);
+      else go(current() + 1);
+    }
+    function prev() {
+      if (track.scrollLeft <= 6) go(items.length - 1);
+      else go(current() - 1);
+    }
+
+    function pad2(n) { return (n < 10 ? "0" : "") + n; }
+    function mark() {
+      var i = current();
+      if (counter) counter.textContent = pad2(i + 1) + " / " + pad2(items.length);
+      else dots.forEach(function (d, n) { d.classList.toggle("active", n === i); });
+    }
+
+    // One interval for the whole life of the page; each tick decides whether to
+    // advance. Pausing never destroys the timer, so a stray hover or visibility
+    // event can't leave autoplay permanently stuck.
+    var hovering = false;
+
+    function tick() {
+      if (!playing || hovering || document.hidden) return;
+      next();
+    }
+    function start() {
+      if (reduce) return;
+      playing = true;
+      if (!timer) timer = setInterval(tick, DELAY);
+      if (playBtn) {
+        playBtn.classList.remove("paused");
+        playBtn.setAttribute("aria-label", "Pause");
+      }
+    }
+    function stop() {
+      playing = false;
+      if (playBtn) {
+        playBtn.classList.add("paused");
+        playBtn.setAttribute("aria-label", "Play");
+      }
+    }
+    function suspend() { hovering = true; }
+    function resume() { hovering = false; }
+
+    var nb = $('[data-gal="next"]', g);
+    var pb = $('[data-gal="prev"]', g);
+    if (nb) nb.addEventListener("click", function () { stop(); next(); });
+    if (pb) pb.addEventListener("click", function () { stop(); prev(); });
+    if (playBtn) playBtn.addEventListener("click", function () { playing ? stop() : start(); });
+
+    // hover-pause covers the photos only: resting the cursor on the controls
+    // after pressing play should not stop what you just started
+    track.addEventListener("mouseenter", suspend);
+    track.addEventListener("mouseleave", resume);
+    track.addEventListener("focusin", suspend);
+    track.addEventListener("focusout", resume);
+    track.addEventListener("pointerdown", stop);
+
+    var queued = false;
+    track.addEventListener("scroll", function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; mark(); });
+    }, { passive: true });
+
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); stop(); next(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); stop(); prev(); }
+    });
+
+    mark();
+    if (reduce) stop();
+    else start();
+  }
+
   /* --------------------------------------------- hero survey plane (canvas) */
   /* A surveyed ground plane in perspective with a scan ring travelling out
      from the viewer, plus a few vertical returns standing on the plane.     */
@@ -874,5 +1097,7 @@ var SITE = {
   initAccordion();
   initFilters();
   initCopy();
+  initPhotos();
+  initGallery();
   initCloud();
 })();

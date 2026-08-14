@@ -1978,6 +1978,323 @@ p a:not(.btn):hover {
 }
 
 /* ==========================================================================
+   ALUMNI LIST (photo + name + dates)
+   ========================================================================== */
+.alumni-list {
+  border-top: 1px solid var(--line);
+}
+.alum {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) auto;
+  gap: 6px 24px;
+  align-items: center;
+  padding: 20px 4px;
+  border-bottom: 1px solid var(--line);
+  transition:
+    padding-left 0.4s var(--ease),
+    background 0.3s;
+}
+.alum:hover {
+  padding-left: 16px;
+  background: linear-gradient(90deg, var(--accent-wash), transparent 60%);
+}
+.alum-photo {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 78px;
+  aspect-ratio: 1;
+  border-radius: 4px;
+}
+.alum-info {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.alum-photo b {
+  font-size: 24px;
+}
+.alum-info h3 {
+  font-family: "Newsreader", serif;
+  font-weight: 400;
+  font-size: clamp(19px, 1.9vw, 23px);
+  letter-spacing: -0.02em;
+  line-height: 1.16;
+}
+.alum-info .role {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 5px;
+  line-height: 1.5;
+}
+.alum-info .role a {
+  color: var(--ink-2);
+  box-shadow: inset 0 -1px 0 var(--line-2);
+}
+.alum-info .role a:hover {
+  color: var(--accent-ink);
+  box-shadow: inset 0 -1px 0 var(--accent);
+}
+.alum .when {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   GALLERY (auto-scrolling strip)
+   ========================================================================== */
+.gallery {
+  position: relative;
+  /* one knob for the whole strip: every photo is this tall */
+  --gh: clamp(230px, 26vw, 340px);
+}
+.gal-track {
+  /* keeps the first photo flush with the page gutter, and makes the snap
+     points line up with it too (scroll-padding, or snapping ignores it) */
+  --edge: max(var(--gut), (100% - var(--maxw)) / 2 + var(--gut));
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 4px var(--edge);
+  scroll-padding-inline: var(--edge);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+}
+.gal-track::-webkit-scrollbar {
+  display: none;
+}
+/* Every photo keeps the same HEIGHT and gets the width its own shape needs,
+   so landscape and portrait shots sit side by side without being cropped.
+   Default is 4:3 landscape; add class="gal-item tall" for a 3:4 portrait, or
+   set any ratio inline with style="--ar: 16/9".                            */
+.gal-item {
+  --ar: 4 / 3;
+  flex: 0 0 auto;
+  margin: 0;
+  scroll-snap-align: start;
+  position: relative;
+}
+.gal-item.tall {
+  --ar: 3 / 4;
+}
+.gal-item.square {
+  --ar: 1 / 1;
+}
+.gal-item .frame {
+  position: relative;
+  height: var(--gh);
+  width: auto;
+  aspect-ratio: var(--ar);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--paper-2);
+}
+.gal-item .frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.55;
+}
+.gal-item img,
+.gal-item video {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
+}
+.gal-item video {
+  background: #0b0b0f;
+}
+.gal-item video[data-auto] {
+  cursor: pointer;
+}
+/* play badge over a clip the visitor paused */
+.gal-play {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 11, 15, 0.5);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.35s var(--ease-out);
+}
+.gal-play::before {
+  content: "";
+  margin-left: 4px;
+  border-left: 15px solid #fff;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+}
+.gal-item.clip-paused .gal-play {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.gal-item:hover img {
+  transform: scale(1.03);
+}
+/* small corner marker so a clip reads as a clip before it starts */
+.gal-item .vtag {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 100px;
+  background: rgba(11, 11, 15, 0.62);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.gal-item .vtag::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 6px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.gal-item.is-empty img {
+  display: none;
+}
+.gal-item.is-empty .frame::after {
+  content: "add photo";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.gal-item figcaption {
+  /* width:0 + min-width:100% keeps a long caption from widening the slide:
+     the caption contributes nothing to the figure's intrinsic width, then
+     stretches to whatever width the photo above it settled on, and wraps. */
+  width: 0;
+  min-width: 100%;
+  margin-top: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.gal-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+.gal-dots {
+  display: flex;
+  gap: 7px;
+  margin-right: auto;
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+.gal-dots.as-counter {
+  align-items: center;
+}
+.gal-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.gal-dot {
+  width: 22px;
+  height: 2px;
+  border: none;
+  padding: 0;
+  background: var(--line-2);
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    width 0.35s var(--ease-out);
+}
+.gal-dot.active {
+  background: var(--accent);
+  width: 34px;
+}
+.gal-btn {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s,
+    transform 0.3s var(--ease-out);
+}
+.gal-btn:hover {
+  border-color: var(--line-2);
+  background: var(--accent-wash);
+  color: var(--accent-ink);
+  transform: translateY(-1px);
+}
+.gal-btn svg {
+  width: 16px;
+  height: 16px;
+}
+.gal-btn .ico-play {
+  display: none;
+}
+.gal-btn.paused .ico-play {
+  display: block;
+}
+.gal-btn.paused .ico-pause {
+  display: none;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 1080px) {
@@ -2088,9 +2405,32 @@ p a:not(.btn):hover {
   .foot-grid {
     grid-template-columns: 1fr;
   }
+  .alum {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 4px 16px;
+  }
+  .alum-photo {
+    width: 58px;
+    grid-row: 1;
+  }
+  .alum-photo b {
+    font-size: 18px;
+  }
+  .alum-info {
+    grid-row: 1;
+  }
+  .alum .when {
+    grid-row: 2;
+    grid-column: 2;
+    justify-self: start;
+  }
+  .gallery {
+    --gh: clamp(200px, 52vw, 260px);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html,
+  .gal-track {
     scroll-behavior: auto;
   }
   .reveal,
