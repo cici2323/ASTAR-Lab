@@ -316,16 +316,15 @@ p a:not(.btn):hover {
   position: relative;
 }
 .brand-mark {
-  width: 26px;
-  height: 26px;
+  /* lab logo, sized to sit level with the wordmark next to it */
+  height: 27px;
+  width: auto;
   flex: none;
-  border-radius: 3px;
-  background: var(--sheen);
-  clip-path: polygon(50% 4%, 96% 96%, 4% 96%);
+  display: block;
   transition: transform 0.5s var(--ease-out);
 }
 .brand:hover .brand-mark {
-  transform: rotate(-8deg) scale(1.06);
+  transform: scale(1.07);
 }
 .brand-text {
   font-family: "Newsreader", serif;
@@ -721,13 +720,13 @@ p a:not(.btn):hover {
   z-index: 0;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(
-    115% 130% at 76% 110%,
+    118% 128% at 46% 112%,
     #000 24%,
     rgba(0, 0, 0, 0.4) 60%,
     transparent 86%
   );
   mask-image: radial-gradient(
-    115% 130% at 76% 110%,
+    118% 128% at 46% 112%,
     #000 24%,
     rgba(0, 0, 0, 0.4) 60%,
     transparent 86%
@@ -747,7 +746,9 @@ p a:not(.btn):hover {
   display: grid;
   grid-template-columns: minmax(0, 1.22fr) minmax(0, 0.78fr);
   gap: 64px;
-  align-items: center;
+  /* both columns start on the same line, so the clip and the eyebrow share a
+     top edge instead of floating independently */
+  align-items: start;
 }
 .hero h1 {
   font-family: "Newsreader", serif;
@@ -763,6 +764,7 @@ p a:not(.btn):hover {
 }
 .hero-cta {
   display: flex;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 32px;
@@ -798,6 +800,71 @@ p a:not(.btn):hover {
   50% {
     opacity: 0.35;
   }
+}
+
+/* Hero video variant. The clip fills its frame edge to edge, the same way
+   photos do in the gallery, instead of floating inside a second rectangle of
+   page colour. A 2:3 crop trims the empty studio backdrop above and below the
+   robot without touching the hard hat or the feet. */
+.plate.is-video {
+  /* the figure is exactly as wide as the frame, so the caption rule below it
+     lines up with the video edges instead of overhanging them */
+  width: clamp(228px, 26vw, 292px);
+  padding: 0;
+  border: none;
+  background: none;
+  justify-self: center;
+}
+.plate.is-video::after {
+  display: none;
+}
+.plate-frame {
+  position: relative;
+  width: 100%;
+  /* the clip's own ratio (578x1004): nothing is cropped, so the raised flag
+     and the feet both stay in frame for the whole loop */
+  aspect-ratio: 578 / 1004;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  /* the clip's own backdrop grey: while the video loads the frame reads as a
+     still image rather than an empty panel */
+  background: #c8c5bf;
+}
+.plate-frame video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Two knobs for how the clip sits against the paper:
+       --clip-warm  0    = original colours       0.15 = clearly warmer
+       --clip-lift  1    = original brightness    1.06 = nearly paper-white
+     Warmth alone matches the page's colour family while the clip keeps its
+     own value, so it still reads as a panel rather than an empty outline. */
+  --clip-warm: 0.06;
+  --clip-lift: 1;
+  filter: sepia(var(--clip-warm)) saturate(1.12) brightness(var(--clip-lift));
+}
+.plate.is-video figcaption {
+  width: 0;
+  min-width: 100%;
+  letter-spacing: 0.05em;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.plate.is-video figcaption {
+  justify-content: center;
+  text-align: center;
+  line-height: 1.7;
+}
+[data-theme="dark"] .plate.is-video {
+  background: transparent;
+  border-color: var(--line);
+}
+[data-theme="dark"] .plate.is-video figcaption {
+  border-top-color: var(--line);
+  color: var(--faint);
 }
 
 .plate {

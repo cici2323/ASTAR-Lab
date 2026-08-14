@@ -83,7 +83,7 @@ var SITE = {
     host.innerHTML =
       '<div class="wrap nav">' +
       '<a class="brand" href="index.html">' +
-      '<span class="brand-mark" aria-hidden="true"></span>' +
+      '<img class="brand-mark" src="assets/logo-icon.png" alt="" aria-hidden="true">' +
       '<span class="brand-text">' +
       SITE.brand.name +
       "<em>" +
@@ -839,6 +839,13 @@ var SITE = {
       im.addEventListener("error", fail);
       if (im.complete && im.naturalWidth === 0) fail();
     });
+    // decorative looping clips stay still for visitors who asked for less motion
+    if (reduce) {
+      $$("video[data-auto]").forEach(function (v) {
+        v.removeAttribute("autoplay");
+        v.pause();
+      });
+    }
   }
 
   /* ---------------------------------------------------------------- gallery */
