@@ -848,6 +848,26 @@ var SITE = {
     }
   }
 
+  /* ------------------------------------------------------------ funder logos */
+  /* Matching the logos on height alone makes a square mark (NY-THRIVE) look
+     tiny next to a long one (NYSERDA). Sizing each so they cover roughly the
+     same AREA evens out their visual weight. An inline --logo-h still wins. */
+  function initLogos() {
+    var AREA = 3800, MIN = 40, MAX = 64;
+    $$(".grant-logo").forEach(function (box) {
+      var im = $("img", box);
+      if (!im || box.style.getPropertyValue("--logo-h")) return;
+      function fit() {
+        if (!im.naturalWidth || !im.naturalHeight) return;
+        var ratio = im.naturalWidth / im.naturalHeight;
+        var h = Math.max(MIN, Math.min(MAX, Math.round(Math.sqrt(AREA / ratio))));
+        box.style.setProperty("--logo-h", h + "px");
+      }
+      if (im.complete) fit();
+      else im.addEventListener("load", fit);
+    });
+  }
+
   /* ---------------------------------------------------------------- gallery */
   /* Horizontal photo strip: auto-advances, pauses on hover or when the tab is
      hidden, and can be driven with the arrows, the dots, or a swipe.        */
@@ -1257,6 +1277,7 @@ var SITE = {
   initCopy();
   initNewsFeed();
   initPhotos();
+  initLogos();
   initGallery();
   initCloud();
 })();
