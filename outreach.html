@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Outreach — A-STAR Lab</title>
+    <meta
+      name="description"
+      content="Outreach and education activities from the A-STAR Lab at Syracuse University: seminars, demonstrations, and community events on construction robotics."
+    />
+    <link rel="icon" href="assets/logo-mark.png" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("astar-theme");
+          if (!t) {
+            t = matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          if (t === "dark")
+            document.documentElement.setAttribute("data-theme", "dark");
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style.css?v=22" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main>
+      <section class="page-head">
+        <div class="wrap reveal">
+          <span class="label">Outreach</span>
+          <h1>Bringing robots <em>out of</em> the lab.</h1>
+          <p class="lede">
+            Seminars, demonstrations, and hands-on sessions that introduce
+            students, practitioners, and the wider community to construction
+            robotics.
+          </p>
+        </div>
+      </section>
+
+      <!-- FILTERS: add a chip here when you introduce a new year or type,
+           and give the matching events the same word in data-tags. -->
+      <section class="section tight">
+        <div class="wrap">
+          <div
+            class="filters reveal"
+            data-filters="eventList"
+            data-page-size="3"
+            data-noun="event|events"
+          >
+            <span class="chip-label">Year</span>
+            <button
+              class="chip"
+              data-group="year"
+              data-tag="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              class="chip"
+              data-group="year"
+              data-tag="2026"
+              aria-pressed="false"
+            >
+              2026
+            </button>
+            <button
+              class="chip"
+              data-group="year"
+              data-tag="2025"
+              aria-pressed="false"
+            >
+              2025
+            </button>
+
+            <span class="chip-sep" aria-hidden="true"></span>
+
+            <span class="chip-label">Type</span>
+            <button
+              class="chip"
+              data-group="type"
+              data-tag="all"
+              aria-pressed="true"
+            >
+              All
+            </button>
+            <button
+              class="chip"
+              data-group="type"
+              data-tag="seminar"
+              aria-pressed="false"
+            >
+              Seminar
+            </button>
+            <button
+              class="chip"
+              data-group="type"
+              data-tag="demo"
+              aria-pressed="false"
+            >
+              Demo
+            </button>
+            <button
+              class="chip"
+              data-group="type"
+              data-tag="workshop"
+              aria-pressed="false"
+            >
+              Workshop
+            </button>
+
+            <label class="search">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              >
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="M16 16l4.5 4.5" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search activities"
+                aria-label="Search outreach activities"
+              />
+            </label>
+            <span class="count"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================
+           ONE <section> PER EVENT, all inside #eventList so the chips
+           above can filter them. To add an event, copy a whole block
+           and change: id, data-rail, data-search, data-tags, the date,
+           the title, the description, and the <figure> list.
+           Media files go in assets/outreach/.
+           ========================================================== -->
+      <div id="eventList">
+        <section
+          class="section"
+          data-tags="2026 demo"
+          id="macron-day"
+          data-rail="macron day"
+          data-search="macron day"
+          data-group="Outreach"
+          data-kind="event"
+        >
+          <div class="wrap">
+            <div class="sec-head reveal">
+              <div class="sh-side">
+                <span class="label">2026 04</span>
+              </div>
+              <div>
+                <h2>Micron Day 2026 Tech Expo</h2>
+                <p>
+                  A-STAR Lab participated in the Micron Day 2026 Tech Expo at
+                  Syracuse University, showcasing our robotic systems to K-12
+                  students, families, and the broader Syracuse community.
+                  Through interactive robot demonstrations, our team introduced
+                  visitors to construction robotics and shared how robotics and
+                  AI can be applied to real-world engineering challenges.
+                </p>
+                <div class="chips">
+                  <span>demo</span><span>K&ndash;12</span><span>Micron</span
+                  ><span>public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery reveal" data-gallery>
+            <div
+              class="gal-track"
+              tabindex="0"
+              role="region"
+              aria-label="Photos from the Construction Robotics Seminar"
+            >
+              
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/02.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/03.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/04.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/05.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/06.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach//20260402/07.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+
+            <div class="wrap gal-ctrl">
+              <div class="gal-dots"></div>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="play"
+                aria-label="Pause"
+              >
+                <svg
+                  class="ico-pause"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                >
+                  <path d="M9.5 5v14M14.5 5v14" />
+                </svg>
+                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5l11 7-11 7z" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================ 20260401 ============================ -->
+        <section
+          class="section line-top"
+          data-tags="2026 demo"
+          id="20260401"
+          data-rail="ECS Open House"
+          data-search="outreach open house showcase"
+          data-group="Outreach"
+          data-kind="event"
+        >
+          <div class="wrap">
+            <div class="sec-head reveal">
+              <div class="sh-side">
+                <span class="label">2026 April</span>
+              </div>
+              <div>
+                <h2>ECS Open House</h2>
+                <p>
+                  A-STAR Lab participated in the Syracuse University Engineering
+                  and Computer Science (ECS) Open House, welcoming admitted and
+                  prospective students and their families to learn about our
+                  research. Yanxi and Huiyang demonstrated robotic platforms and
+                  introduced visitors to ongoing work in construction robotics
+                  and human-robot interaction.
+                </p>
+                <div class="chips">
+                  <span>demo</span><span>K&ndash;12</span><span>public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery reveal" data-gallery>
+            <div
+              class="gal-track"
+              tabindex="0"
+              role="region"
+              aria-label="Photos from this event"
+            >
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/20260401/00.jpeg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img src="assets/outreach/20260401/01.jpeg" loading="lazy" />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/20260401/02.jpeg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+
+            <div class="wrap gal-ctrl">
+              <div class="gal-dots"></div>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="play"
+                aria-label="Pause"
+              >
+                <svg
+                  class="ico-pause"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                >
+                  <path d="M9.5 5v14M14.5 5v14" />
+                </svg>
+                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5l11 7-11 7z" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- ============================ 202603 ============================ -->
+        <section
+          class="section line-top"
+          data-tags="2026 demo"
+          id="2-26-3"
+          data-rail="ECS Showcase"
+          data-search="outreach showcase demo"
+          data-group="Outreach"
+          data-kind="event"
+        >
+          <div class="wrap">
+            <div class="sec-head reveal">
+              <div class="sh-side">
+                <span class="label">2026 03</span>
+              </div>
+              <div>
+                <h2>ECS Showcase</h2>
+                <p>
+                  A-STAR Lab participated in the ECS Showcase for admitted
+                  students, sharing our robotics research with prospective
+                  students and their families. Yanxi Liu presented our humanoid
+                  robot, while Huiyang Gong demonstrated our robotic arm, giving
+                  visitors a hands-on look at the robotic platforms used in our
+                  research.
+                </p>
+                <div class="chips">
+                  <span>demo</span><span>K&ndash;12</span><span>public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery reveal" data-gallery>
+            <div
+              class="gal-track"
+              tabindex="0"
+              role="region"
+              aria-label="Photos from this event"
+            >
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/01.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/02.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/03.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/04.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/05.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/06.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/07.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/08.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/09.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202603/10.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+
+            <div class="wrap gal-ctrl">
+              <div class="gal-dots"></div>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="play"
+                aria-label="Pause"
+              >
+                <svg
+                  class="ico-pause"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                >
+                  <path d="M9.5 5v14M14.5 5v14" />
+                </svg>
+                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5l11 7-11 7z" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- ============================ 202601 ============================ -->
+        <section
+          class="section line-top"
+          data-tags="2026 workshop, seminar"
+          id="202501"
+          data-rail="Dobot-CASM workshop"
+          data-search="outreach 202601 Dobot-CASM workshop"
+          data-group="Outreach"
+          data-kind="event"
+        >
+          <div class="wrap">
+            <div class="sec-head reveal">
+              <div class="sh-side">
+                <span class="label">2026 01</span>
+              </div>
+              <div>
+                <h2>Dobot-CASM workshop</h2>
+                <p>
+                  A-STAR Lab joined Syracuse University and DOBOT Robotics for
+                  the Global Seminar on Collective Embodied Intelligence,
+                  bringing together faculty, industry, and students for invited
+                  talks and live robot demonstrations. Dr. Yizhi Liu presented
+                  <b>Human-Centric Worker-Robot Co-adaptation in Construction</b
+                  >, sharing our work on human-robot collaboration in
+                  construction environments.
+                </p>
+                <div class="chips">
+                  <span>seminar</span><span>workshop</span><span>K&ndash;12</span
+                  ><span>public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery reveal" data-gallery>
+            <div
+              class="gal-track"
+              tabindex="0"
+              role="region"
+              aria-label="Photos from this event"
+            >
+              <figure class="gal-item">
+                <div class="frame">
+                  <video
+                    data-auto
+                    muted
+                    loop
+                    playsinline
+                    poster="assets/outreach/202601/01.png"
+                    src="assets/outreach/202601/01.mp4"
+                  ></video>
+                  <span class="vtag">click to pause</span>
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202601/02.JPG"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202601/03.JPG"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202601/04.JPG"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+
+            <div class="wrap gal-ctrl">
+              <div class="gal-dots"></div>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="play"
+                aria-label="Pause"
+              >
+                <svg
+                  class="ico-pause"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                >
+                  <path d="M9.5 5v14M14.5 5v14" />
+                </svg>
+                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5l11 7-11 7z" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- ============================ 202510 ============================ -->
+        <section
+          class="section line-top"
+          data-tags="2025 demo"
+          id="202510"
+          data-rail="robot demo day"
+          data-search="outreach 202510 robot demo day"
+          data-group="Outreach"
+          data-kind="event"
+        >
+          <div class="wrap">
+            <div class="sec-head reveal">
+              <div class="sh-side">
+                <span class="label">2025 Oct</span>
+              </div>
+              <div>
+                <h2>Robot Demo Day</h2>
+                <p>
+                  A-STAR Lab hosted a Robot Demo Day featuring two robotic
+                  platforms: a humanoid robot and a legged robot. Visitors had
+                  the opportunity to see both systems in action and learn about
+                  their roles in our robotics research.
+                </p>
+                <div class="chips">
+                  <span>demo</span><span>K&ndash;12</span><span>public</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gallery reveal" data-gallery>
+            <div
+              class="gal-track"
+              tabindex="0"
+              role="region"
+              aria-label="Photos from this event"
+            >
+              <figure class="gal-item">
+                <div class="frame">
+                  <video
+                    data-auto
+                    muted
+                    loop
+                    playsinline
+                    poster="assets/outreach/202510/01.png"
+                    src="assets/outreach/202510/01.mp4"
+                  ></video>
+                  <span class="vtag">click to pause</span>
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/02.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/03.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/04.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/05.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/06.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/07.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/08.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/09.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/10.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/11.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+              <figure class="gal-item tall">
+                <div class="frame">
+                  <img
+                    src="assets/outreach/202510/12.jpg"
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+              </figure>
+            </div>
+
+            <div class="wrap gal-ctrl">
+              <div class="gal-dots"></div>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="prev"
+                aria-label="Previous"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 5l-7 7 7 7" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="play"
+                aria-label="Pause"
+              >
+                <svg
+                  class="ico-pause"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                >
+                  <path d="M9.5 5v14M14.5 5v14" />
+                </svg>
+                <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5l11 7-11 7z" />
+                </svg>
+              </button>
+              <button
+                class="gal-btn"
+                type="button"
+                data-gal="next"
+                aria-label="Next"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="wrap">
+          <p class="no-match">No activity matches that filter.</p>
+          <div class="pager" data-pager></div>
+        </div>
+      </div>
+      <!-- /#eventList -->
+
+      <section class="section" id="host" data-rail="Host">
+        <div class="wrap">
+          <div class="band reveal">
+            <div class="inner">
+              <span class="label">Invite us</span>
+              <h2>Want a robotics demo for your <em>class or group</em>?</h2>
+              <p>
+                We are glad to run seminars and demonstrations for courses,
+                student organizations, and visiting groups.
+              </p>
+              <div class="hero-cta">
+                <a class="btn solid on-dark" href="mailto:yliu580@syr.edu"
+                  >Get in touch <span class="arw">&rarr;</span></a
+                >
+                <a class="btn on-dark" href="people.html">Meet the team</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="assets/site.js?v=22"></script>
+  </body>
+</html>

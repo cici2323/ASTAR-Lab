@@ -940,6 +940,12 @@ p a:not(.btn):hover {
 .section.line-top {
   border-top: 1px solid var(--line);
 }
+/* Every outreach event gets the separator, whatever its own classes say. The
+   filters hide arbitrary events, so relying on a hand-placed .line-top made
+   the line appear or vanish depending on which one happened to be first. */
+#eventList > section {
+  border-top: 1px solid var(--line);
+}
 .sec-head {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
@@ -1286,6 +1292,67 @@ p a:not(.btn):hover {
     padding-left 0.4s var(--ease),
     background 0.3s;
 }
+/* funder logo under the date on a grant row. Logos arrive as PNG/JPG/SVG with
+   different backgrounds and proportions, so each sits on a light plate at a
+   fixed height and keeps its own width. */
+/* expanded grant entry: text on the left, funder logo on the right */
+.grant-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  /* column gap only: a row gap here would push .links away from the text and
+     break the rhythm the non-grant entries have */
+  column-gap: 30px;
+  row-gap: 0;
+  align-items: start;
+}
+/* everything (text, links, chips) stacks in the left column; only the logo
+   sits in the right one. Without this, an entry with an extra child would
+   auto-place it into the logo's slot. */
+.grant-body > * {
+  grid-column: 1;
+}
+.grant-body > .grant-logo {
+  grid-column: 2;
+  grid-row: 1;
+}
+.grant-logo {
+  /* per-logo override: <span class="grant-logo" style="--logo-h: 52px"> */
+  --logo-h: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 12px 14px;
+  margin-top: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+.grant-logo img {
+  height: var(--logo-h);
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+}
+[data-theme="dark"] .grant-logo {
+  background: var(--plate);
+  border-color: transparent;
+}
+@media (max-width: 620px) {
+  .grant-body {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .grant-body > .grant-logo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .grant-logo {
+    --logo-h: 34px;
+    margin-top: 4px;
+  }
+}
+
 .idx-row > .sub {
   grid-column: 2/3;
   font-family: "IBM Plex Mono", monospace;
@@ -1430,6 +1497,22 @@ p a:not(.btn):hover {
   border-color: var(--line-2);
   color: var(--ink);
 }
+/* divider between two chip groups (e.g. year | type) */
+.chip-sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 20px;
+  background: var(--line);
+  margin: 0 6px;
+}
+.chip-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-right: 2px;
+}
 .chip[aria-pressed="true"] {
   background: var(--ink);
   border-color: var(--ink);
@@ -1543,7 +1626,10 @@ p a:not(.btn):hover {
 }
 .pi-card p {
   color: var(--ink-2);
-  max-width: 64ch;
+  font-size: 15px;
+  /* full column width, so the bio's right edge lines up with the sections
+     below it (was capped at 64ch for shorter, easier-to-read lines) */
+  max-width: none;
 }
 .pi-card p + p {
   margin-top: 14px;
@@ -2257,7 +2343,43 @@ p a:not(.btn):hover {
   background: var(--accent);
   width: 34px;
 }
-.gal-btn {
+/* ==========================================================================
+   PAGER (long lists: news, publications)
+   ========================================================================== */
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 46px;
+}
+.pager:empty {
+  display: none;
+}
+.pg-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-width: 9ch;
+  text-align: center;
+}
+.pg-btn[disabled] {
+  opacity: 0.32;
+  cursor: not-allowed;
+  transform: none;
+}
+.pg-btn[disabled]:hover {
+  border-color: var(--line);
+  background: transparent;
+  color: inherit;
+  transform: none;
+}
+
+.gal-btn,
+.pg-btn {
   width: 40px;
   height: 40px;
   flex: none;
@@ -2274,13 +2396,15 @@ p a:not(.btn):hover {
     background 0.2s,
     transform 0.3s var(--ease-out);
 }
-.gal-btn:hover {
+.gal-btn:hover,
+.pg-btn:hover {
   border-color: var(--line-2);
   background: var(--accent-wash);
   color: var(--accent-ink);
   transform: translateY(-1px);
 }
-.gal-btn svg {
+.gal-btn svg,
+.pg-btn svg {
   width: 16px;
   height: 16px;
 }

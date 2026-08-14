@@ -50,7 +50,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/style.css?v=6" />
+    <link rel="stylesheet" href="assets/style.css?v=22" />
   </head>
   <body>
     <div id="site-header"></div>
@@ -134,28 +134,14 @@
               <span class="note">Syracuse, NY</span>
             </div>
             <div class="spec">
-              <dt>Research areas</dt>
-              <dd>Construction Automation</dd>
-              <span class="note"
-                >Human-robot collaboration &middot; Adaptive robot systems
-                &middot; Safety &middot; Inspection</span
-              >
-            </div>
-            <div class="spec">
               <dt>Research Platforms</dt>
               <dd>
                 Humanoids, Robotic Arms, Legged Robots, Motion Capture Systems
               </dd>
-              <!-- <span class="note">Welcome to visit</span> -->
             </div>
             <div class="spec">
-              <dt>Support</dt>
-              <dd>NSF, NVIDIA & More</dd>
-              <span class="note">Robotics + academic grant programs</span>
-            </div>
-            <div class="spec">
-              <dt>Recruiting</dt>
-              <dd>Postdoc, PhD, MS, Undergraduate</dd>
+              <dt>Opportunities</dt>
+              <dd>Students, Researchers & Collaborators</dd>
               <span class="note">See the join page</span>
             </div>
           </dl>
@@ -170,8 +156,8 @@
             <div>
               <h2>Several research areas, <em>one shared goal.</em></h2>
               <p>
-                We study how robots can perceive, plan, learn, and interact with
-                people in complex real-world environments.
+                We develops advanced technologies to address critical challenges
+                facing the civil and construction industries.
               </p>
               <!-- <a class="btn line sh-link" href="research.html"
                 >All research <span class="arw">&rarr;</span></a
@@ -309,7 +295,13 @@
             </div>
           </div>
 
-          <div class="idx reveal">
+          <!-- Auto-filled from news.html at load; the entries below are the fallback
+               shown if that fetch fails (e.g. opened over file://). -->
+          <div
+            class="idx reveal"
+            data-news-feed="news.html"
+            data-news-count="3"
+          >
             <div
               class="idx-row"
               data-search="humanoid learning from workers"
@@ -449,6 +441,6 @@
     </main>
 
     <div id="site-footer"></div>
-    <script src="assets/site.js?v=6"></script>
+    <script src="assets/site.js?v=22"></script>
   </body>
 </html>

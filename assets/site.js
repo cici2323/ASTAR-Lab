@@ -14,6 +14,7 @@ var SITE = {
     { href: "people.html", label: "People" },
     { href: "publications.html", label: "Publications" },
     { href: "news.html", label: "News" },
+    { href: "outreach.html", label: "Outreach" },
     { href: "join.html", label: "Join", cta: true },
   ],
 
@@ -244,7 +245,7 @@ var SITE = {
     });
 
     $$("[data-search]").forEach(function (row) {
-      var h = $("h3", row);
+      var h = $("h3", row) || $("h2", row);
       items.push({
         group: row.getAttribute("data-group") || "Entries",
         label: h ? h.textContent.trim() : row.getAttribute("data-search"),
@@ -363,6 +364,8 @@ var SITE = {
       close();
       if (it.node) {
         var row = it.node;
+        // if the row is filtered out or on another page, bring it back first
+        if (typeof row.__revealRow === "function") row.__revealRow();
         row.scrollIntoView({
           behavior: reduce ? "auto" : "smooth",
           block: "center",
@@ -458,6 +461,13 @@ var SITE = {
     document.body.appendChild(rail);
 
     var links = $$("a", rail);
+    // a paginated-away section has to be brought back before the anchor jump
+    links.forEach(function (a, n) {
+      a.addEventListener("click", function () {
+        if (typeof secs[n].__revealRow === "function") secs[n].__revealRow();
+      });
+    });
+
     return function (y) {
       rail.classList.toggle("show", y > 380);
       var best = 0;
@@ -600,28 +610,68 @@ var SITE = {
   }
 
   /* -------------------------------------------------------------- accordion */
-  function initAccordion() {
-    $$(".idx-row").forEach(function (row) {
-      if (!$(".idx-body", row)) return;
-      row.setAttribute("tabindex", "0");
-      row.setAttribute("role", "button");
-      row.setAttribute("aria-expanded", "false");
+  function bindAccordion(row) {
+    if (!$(".idx-body", row) || row.hasAttribute("data-acc")) return;
+    row.setAttribute("data-acc", "");
+    row.setAttribute("tabindex", "0");
+    row.setAttribute("role", "button");
+    row.setAttribute("aria-expanded", "false");
 
-      function toggle() {
-        var open = row.classList.toggle("open");
-        row.setAttribute("aria-expanded", String(open));
-      }
-      row.addEventListener("click", function (e) {
-        if (e.target.closest("a")) return;
-        toggle();
-      });
-      row.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggle();
-        }
-      });
+    function toggle() {
+      var open = row.classList.toggle("open");
+      row.setAttribute("aria-expanded", String(open));
+    }
+    row.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      toggle();
     });
+    row.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  }
+
+  function initAccordion() {
+    $$(".idx-row").forEach(bindAccordion);
+  }
+
+  /* -------------------------------------------------------------- news feed */
+  /* The home page teaser mirrors the top entries of news.html, so the two can
+     never drift. The markup already in the page is the fallback: if the fetch
+     fails (opened over file://, offline) it simply stays.                    */
+  function initNewsFeed() {
+    var host = $("[data-news-feed]");
+    if (!host || typeof window.fetch !== "function") return;
+
+    var src = host.getAttribute("data-news-feed") || "news.html";
+    var want = parseInt(host.getAttribute("data-news-count"), 10) || 3;
+
+    fetch(src, { cache: "no-cache" })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var rows = $$("#newsList .idx-row", doc).slice(0, want);
+        if (!rows.length) return;
+
+        host.innerHTML = "";
+        rows.forEach(function (r) {
+          var copy = r.cloneNode(true);
+          copy.classList.remove("open");
+          copy.removeAttribute("style");
+          copy.removeAttribute("data-acc");
+          host.appendChild(copy);
+          bindAccordion(copy);
+        });
+        initPhotos();
+      })
+      .catch(function () {
+        /* keep whatever is already in the page */
+      });
   }
 
   /* ---------------------------------------------------------------- filters */
@@ -634,37 +684,118 @@ var SITE = {
       var input = $("input", bar);
       var count = $(".count", bar);
       var empty = $(".no-match", scope.parentNode) || $(".no-match", scope);
-      var tag = "all";
+      // "entry|entries" by default; override with data-noun="event|events"
+      var nouns = (bar.getAttribute("data-noun") || "entry|entries").split("|");
 
-      function apply() {
-        var q = input ? input.value.trim().toLowerCase() : "";
-        var n = 0;
-        rows.forEach(function (r) {
-          var okTag =
-            tag === "all" ||
-            (" " + r.getAttribute("data-tags") + " ").indexOf(" " + tag + " ") >
-              -1;
-          var okQ = !q || r.textContent.toLowerCase().indexOf(q) > -1;
-          var show = okTag && okQ;
-          r.style.display = show ? "" : "none";
-          if (show) n++;
-          if (!show) r.classList.remove("open");
-        });
-        if (count) count.textContent = n + (n === 1 ? " entry" : " entries");
-        if (empty) empty.classList.toggle("show", n === 0);
+      // Chips can be split into independent groups with data-group (e.g. year
+      // and type): one active choice per group, and the groups combine. Chips
+      // with no data-group all share a single group, i.e. the old behaviour.
+      var state = {};
+      function groupOf(c) { return c.getAttribute("data-group") || "tag"; }
+      chips.forEach(function (c) { state[groupOf(c)] = "all"; });
+
+      /* --- pagination (opt-in) -------------------------------------------
+         Add data-page-size="6" to the filters bar and drop a
+         <div class="pager" data-pager></div> after the list. Paging applies
+         to whatever the chips and the search box have left visible.        */
+      var pager = $("[data-pager]", scope.parentNode) || $("[data-pager]", scope);
+      var pageSize = parseInt(bar.getAttribute("data-page-size"), 10) || 0;
+      var page = 1;
+      var prevBtn = null, nextBtn = null, pgLabel = null;
+
+      var ARROW_L = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+      var ARROW_R = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+
+      if (pager && pageSize) {
+        pager.innerHTML =
+          '<button class="pg-btn" type="button" data-pg="prev" aria-label="Previous page">' + ARROW_L + "</button>" +
+          '<span class="pg-label" aria-live="polite"></span>' +
+          '<button class="pg-btn" type="button" data-pg="next" aria-label="Next page">' + ARROW_R + "</button>";
+        prevBtn = $('[data-pg="prev"]', pager);
+        nextBtn = $('[data-pg="next"]', pager);
+        pgLabel = $(".pg-label", pager);
+
+        function goPage(n) {
+          page = n;
+          apply(true);
+          // bring the top of the list into view, allowing for the fixed header
+          var top = scope.getBoundingClientRect().top + window.scrollY - 110;
+          window.scrollTo({ top: top, behavior: reduce ? "auto" : "smooth" });
+        }
+        prevBtn.addEventListener("click", function () { if (page > 1) goPage(page - 1); });
+        nextBtn.addEventListener("click", function () { goPage(page + 1); });
       }
+
+      function apply(keepPage) {
+        if (!keepPage) page = 1;
+        var q = input ? input.value.trim().toLowerCase() : "";
+
+        var matches = rows.filter(function (r) {
+          var tags = " " + (r.getAttribute("data-tags") || "") + " ";
+          var okTag = Object.keys(state).every(function (g) {
+            return state[g] === "all" || tags.indexOf(" " + state[g] + " ") > -1;
+          });
+          return okTag && (!q || r.textContent.toLowerCase().indexOf(q) > -1);
+        });
+
+        var pages = pageSize ? Math.max(1, Math.ceil(matches.length / pageSize)) : 1;
+        if (page > pages) page = pages;
+        var from = pageSize ? (page - 1) * pageSize : 0;
+        var to = pageSize ? from + pageSize : matches.length;
+        var shown = matches.slice(from, to);
+
+        rows.forEach(function (r) {
+          if (shown.indexOf(r) > -1) {
+            r.style.display = "";
+          } else {
+            r.style.display = "none";
+            r.classList.remove("open");
+          }
+        });
+
+        if (count) {
+          count.textContent =
+            matches.length + " " + (matches.length === 1 ? nouns[0] : nouns[1] || nouns[0]);
+        }
+        if (empty) empty.classList.toggle("show", matches.length === 0);
+
+        if (pgLabel) {
+          pager.style.display = pages > 1 ? "" : "none";
+          pgLabel.textContent = "Page " + page + " / " + pages;
+          prevBtn.disabled = page <= 1;
+          nextBtn.disabled = page >= pages;
+        }
+      }
+
+      // Lets the command palette jump to an entry that is currently filtered
+      // out or sitting on another page: clear the filters, then page to it.
+      rows.forEach(function (r) {
+        r.__revealRow = function () {
+          Object.keys(state).forEach(function (g) { state[g] = "all"; });
+          chips.forEach(function (c) {
+            c.setAttribute("aria-pressed", String(c.getAttribute("data-tag") === "all"));
+          });
+          if (input) input.value = "";
+          var idx = rows.indexOf(r);
+          page = pageSize ? Math.floor(idx / pageSize) + 1 : 1;
+          apply(true);
+        };
+      });
 
       chips.forEach(function (c) {
         c.addEventListener("click", function () {
-          tag = c.getAttribute("data-tag");
+          var g = groupOf(c);
+          state[g] = c.getAttribute("data-tag");
           chips.forEach(function (o) {
-            o.setAttribute("aria-pressed", String(o === c));
+            if (groupOf(o) === g) {
+              o.setAttribute("aria-pressed", String(o === c));
+            }
           });
           apply();
         });
       });
       if (input) {
-        input.addEventListener("input", apply);
+        input.addEventListener("input", function () { apply(); });
         input.addEventListener("keydown", function (e) {
           if (e.key === "Escape") {
             input.value = "";
@@ -714,9 +845,11 @@ var SITE = {
   /* Horizontal photo strip: auto-advances, pauses on hover or when the tab is
      hidden, and can be driven with the arrows, the dots, or a swipe.        */
   function initGallery() {
-    var g = $("[data-gallery]");
-    if (!g) return;
+    // a page can hold several strips (outreach has one per event)
+    $$("[data-gallery]").forEach(setupGallery);
+  }
 
+  function setupGallery(g) {
     var track = $(".gal-track", g);
     var items = $$(".gal-item", track);
     var dotsHost = $(".gal-dots", g);
@@ -869,7 +1002,8 @@ var SITE = {
     var hovering = false;
 
     function tick() {
-      if (!playing || hovering || document.hidden) return;
+      // nothing to do when every slide already fits on screen
+      if (!playing || hovering || document.hidden || maxScroll() <= 8) return;
       next();
     }
     function start() {
@@ -916,6 +1050,23 @@ var SITE = {
       if (e.key === "ArrowRight") { e.preventDefault(); stop(); next(); }
       else if (e.key === "ArrowLeft") { e.preventDefault(); stop(); prev(); }
     });
+
+    // Arrows and counter are pointless when the whole strip already fits. This
+    // has to be re-checked whenever the track's box changes, not just on window
+    // resize: a strip inside a hidden page (pagination) measures 0 wide, so it
+    // would otherwise stay control-less after the page is switched back on.
+    var ctrlBar = $(".gal-ctrl", g);
+    function syncCtrl() {
+      if (!ctrlBar) return;
+      var want = maxScroll() > 8 ? "" : "none";
+      if (ctrlBar.style.display !== want) ctrlBar.style.display = want;
+      mark();
+    }
+    window.addEventListener("resize", syncCtrl);
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(syncCtrl).observe(track);
+    }
+    syncCtrl();
 
     mark();
     if (reduce) stop();
@@ -1097,6 +1248,7 @@ var SITE = {
   initAccordion();
   initFilters();
   initCopy();
+  initNewsFeed();
   initPhotos();
   initGallery();
   initCloud();

@@ -29,7 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/style.css?v=6" />
+    <link rel="stylesheet" href="assets/style.css?v=22" />
   </head>
   <body>
     <div id="site-header"></div>
@@ -57,7 +57,7 @@
 
       <section class="section" id="papers" data-rail="Papers">
         <div class="wrap">
-          <div class="filters reveal" data-filters="pubList">
+          <div class="filters reveal" data-filters="pubList" data-page-size="8">
             <button class="chip" data-tag="all" aria-pressed="true">All</button>
             <button class="chip" data-tag="hrc" aria-pressed="false">
               Human-Robot Collaboration
@@ -526,6 +526,7 @@
             </div>
           </div>
           <p class="no-match">No entry matches that filter.</p>
+          <div class="pager" data-pager></div>
         </div>
       </section>
 
@@ -553,6 +554,6 @@
     </main>
 
     <div id="site-footer"></div>
-    <script src="assets/site.js?v=6"></script>
+    <script src="assets/site.js?v=22"></script>
   </body>
 </html>
