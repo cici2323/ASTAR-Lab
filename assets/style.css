@@ -762,6 +762,37 @@ p a:not(.btn):hover {
   font-style: italic;
   color: var(--accent-ink);
 }
+/* hero title: the mark and the lab's full name read as one lockup */
+.hero h1.hero-title {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2vw, 30px);
+  font-size: clamp(27px, 3.3vw, 45px);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+.hero-title-mark {
+  height: clamp(88px, 10.5vw, 152px);
+  width: auto;
+  flex: none;
+}
+.hero h1.hero-title em {
+  /* upright, not italic: it is an acronym, not an aside */
+  font-style: normal;
+  font-weight: 500;
+  color: var(--accent-ink);
+}
+@media (max-width: 620px) {
+  .hero h1.hero-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .hero-title-mark {
+    height: 76px;
+  }
+}
+
 .hero-cta {
   display: flex;
   align-items: center;
@@ -769,6 +800,7 @@ p a:not(.btn):hover {
   flex-wrap: wrap;
   margin-top: 32px;
 }
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
