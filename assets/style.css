@@ -857,25 +857,23 @@ p a:not(.btn):hover {
      and the feet both stay in frame for the whole loop */
   aspect-ratio: 578 / 1004;
   overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  /* the clip's own backdrop grey: while the video loads the frame reads as a
-     still image rather than an empty panel */
-  background: #c8c5bf;
+  /* The clip carries its own alpha channel, so there is no panel to outline and
+     no backdrop to stand in for while it loads — a border or fill here would
+     read as a box drawn around a robot that is otherwise sitting on the paper.
+     The transparent poster covers the load gap instead. */
+  border: 0;
+  background: transparent;
 }
 .plate-frame video {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Two knobs for how the clip sits against the paper:
-       --clip-warm  0    = original colours       0.15 = clearly warmer
-       --clip-lift  1    = original brightness    1.06 = nearly paper-white
-     Warmth alone matches the page's colour family while the clip keeps its
-     own value, so it still reads as a panel rather than an empty outline. */
-  --clip-warm: 0.06;
-  --clip-lift: 1;
-  filter: sepia(var(--clip-warm)) saturate(1.12) brightness(var(--clip-lift));
+  /* No filter here. The warmth/lift pair existed to nudge the old opaque grey
+     backdrop toward the paper colour; with an alpha clip there is no backdrop
+     left to correct, and any filter would tint the robot itself — sepia(0.06)
+     saturate(1.12) turned the former #FAF9F5 fill into rgb(255,252,243), which
+     is what made the panel read lighter than the page. */
 }
 .plate.is-video figcaption {
   width: 0;

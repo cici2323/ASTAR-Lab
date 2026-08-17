@@ -92,16 +92,26 @@
 
           <figure class="plate is-video reveal">
             <div class="plate-frame">
+              <!-- Transparent-background clip so the robot sits directly on the
+                   page instead of inside a second rectangle of near-page colour.
+                   Order matters: Safari is the only engine that reads
+                   video/quicktime, and it is also the only one that decodes HEVC
+                   with an alpha layer; Chrome/Firefox report quicktime as
+                   unplayable, skip it and take the VP9 webm. The solid-colour mp4
+                   is the last resort for anything with neither. -->
               <video
-                src="assets/g1_logo-2.mp4"
-                poster="assets/g1_logo-2-poster.jpg"
+                poster="assets/g1_logo-2-poster.png"
                 data-auto
                 autoplay
                 muted
                 loop
                 playsinline
                 aria-label="A-STAR Lab humanoid robot"
-              ></video>
+              >
+                <source src="assets/g1_logo-2_alpha.mov" type="video/quicktime" />
+                <source src="assets/g1_logo-2_alpha.webm" type="video/webm" />
+                <source src="assets/g1_logo-2_solidbg.mp4" type="video/mp4" />
+              </video>
             </div>
             <!-- <figcaption>
               <span>AI-Driven Sensing Technology And Robotics Lab</span>
