@@ -1102,6 +1102,87 @@ p a:not(.btn):hover {
   white-space: nowrap;
 }
 
+/* A compact statement of the lab's philosophy between overview and research. */
+.section.motto-section {
+  padding: 56px 0;
+}
+.motto-layout {
+  align-items: center;
+  margin-bottom: 0;
+}
+.motto-quote {
+  --motto-ink: #193b53;
+  --motto-gold: #b89a47;
+  min-width: 0;
+}
+.motto-quote blockquote {
+  position: relative;
+  padding: 0 42px;
+  color: var(--motto-ink);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+.motto-mark {
+  position: absolute;
+  color: var(--motto-gold);
+  font-size: 1.65em;
+  font-style: normal;
+  line-height: 0.8;
+}
+.motto-mark--open {
+  top: -0.05em;
+  left: 0;
+}
+.motto-mark--close {
+  right: 0;
+  bottom: -0.1em;
+}
+.motto-quote figcaption {
+  margin-top: 18px;
+  color: var(--ink-2);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 20px;
+  text-align: center;
+}
+.motto-quote cite {
+  font-style: italic;
+}
+.motto-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 660px;
+  margin: 20px auto 0;
+  color: var(--motto-gold);
+  font-size: 20px;
+  line-height: 1;
+}
+.motto-rule::before,
+.motto-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+[data-theme="dark"] .motto-quote {
+  --motto-ink: #d6e4f2;
+  --motto-gold: #ceb46b;
+}
+@media (max-width: 620px) {
+  .section.motto-section {
+    padding: 40px 0;
+  }
+  .motto-quote blockquote {
+    padding: 0 28px;
+  }
+}
+
 /* --- spec table (replaces stat tiles) ---------------------------------- */
 .specs {
   border-top: 1px solid var(--line);
@@ -1137,10 +1218,11 @@ p a:not(.btn):hover {
   color: var(--muted);
 }
 .spec dd {
-  font-family: "Newsreader", serif;
-  font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: normal;
+  line-height: 1.75;
 }
 .spec .note {
   font-family: "IBM Plex Mono", monospace;
@@ -1301,7 +1383,7 @@ p a:not(.btn):hover {
   z-index: 1;
 }
 .ex-stage--research .ex-panel {
-  padding: 12px 20px 32px;
+  padding: 8px 16px 24px;
 }
 .ex-stage--research .label {
   position: absolute;
@@ -1313,15 +1395,15 @@ p a:not(.btn):hover {
 }
 .ex-stage--research .ex-panel p {
   position: relative;
-  width: 78%;
-  padding: 6px 12px;
-  border: 2px solid #163643;
-  border-radius: 18px;
+  width: 82%;
+  padding: 4px 10px;
+  border: 1.5px solid #163643;
+  border-radius: 14px;
   background: #fff;
   color: #16151a;
   font-family: "Newsreader", Georgia, serif;
-  font-size: clamp(20px, 1.75vw, 22px);
-  line-height: 1.08;
+  font-size: clamp(18px, 1.6vw, 20px);
+  line-height: 1.1;
   letter-spacing: -0.02em;
 }
 .ex-stage--research .ex-panel p::before,
@@ -1331,14 +1413,14 @@ p a:not(.btn):hover {
   left: 26%;
   width: 0;
   height: 0;
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-top: 14px solid #163643;
-  bottom: -14px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 10px solid #163643;
+  bottom: -10px;
 }
 .ex-stage--research .ex-panel p::after {
   border-top-color: #fff;
-  bottom: -11px;
+  bottom: -8px;
 }
 .ex-stage--research .ex-panel em {
   color: #4b2fe0;
@@ -1351,12 +1433,12 @@ p a:not(.btn):hover {
     background-position: center bottom;
   }
   .ex-stage--research .ex-panel {
-    padding: 12px 12px 32px;
+    padding: 10px 12px 24px;
   }
   .ex-stage--research .ex-panel p {
     width: 94%;
-    font-size: 20px;
-    line-height: 1.12;
+    font-size: 18px;
+    line-height: 1.15;
   }
 }
 .ex-fig {
@@ -2805,9 +2887,6 @@ p a:not(.btn):hover {
   .search {
     margin-left: 0;
     width: 100%;
-  }
-  .spec dd {
-    font-size: 22px;
   }
   .foot-grid {
     grid-template-columns: 1fr;

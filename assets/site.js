@@ -789,6 +789,22 @@ var SITE = {
           }
         });
       }
+      // News links can select a category without changing the default archive.
+      if (scope.id === "newsList") {
+        var initialTag = new URLSearchParams(location.search).get("tag");
+        var initialChip = chips.filter(function (c) {
+          return c.getAttribute("data-tag") === initialTag;
+        })[0];
+        if (initialChip) {
+          var initialGroup = groupOf(initialChip);
+          state[initialGroup] = initialTag;
+          chips.forEach(function (c) {
+            if (groupOf(c) === initialGroup) {
+              c.setAttribute("aria-pressed", String(c === initialChip));
+            }
+          });
+        }
+      }
       apply();
     });
   }
