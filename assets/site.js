@@ -26,6 +26,14 @@ var SITE = {
 
   footer: {
     blurb: "AI-Driven Sensing Technology And Robotics Lab",
+    sponsors: [
+      { name: "National Science Foundation", image: "logo/nsf_logo.jpg", key: "nsf" },
+      { name: "Syracuse University", image: "logo/SU_logo.jpeg", key: "syracuse" },
+      { name: "NVIDIA Academic Grant Program", image: "logo/nvidia_logo.jpg", key: "nvidia" },
+      { name: "NYSERDA", image: "logo/NYSERDA_logo.svg", key: "nyserda" },
+      { name: "OpenAI", image: "logo/openai_logo.jpg", key: "openai" },
+      { name: "NY SMART I-Corridor", image: "logo/NYTHRIVE_logo.png", key: "ny-smart" },
+    ],
     address: [
       "Dept. of Civil &amp; Environmental Engineering",
       "Syracuse University",
@@ -164,6 +172,16 @@ var SITE = {
       })
       .join("");
 
+    var sponsors = SITE.footer.sponsors
+      .map(function (sponsor) {
+        return (
+          '<div class="sponsor-logo sponsor-logo--' + sponsor.key + '" role="listitem">' +
+          '<img src="assets/grants/' + sponsor.image + '" alt="' + sponsor.name +
+          '" loading="lazy" decoding="async"></div>'
+        );
+      })
+      .join("");
+
     host.innerHTML =
       '<div class="wrap">' +
       '<div class="foot-grid">' +
@@ -194,6 +212,9 @@ var SITE = {
       "</p>" +
       "</div>" +
       "</div>" +
+      '<section class="foot-sponsors" aria-labelledby="sponsors-heading">' +
+      '<h4 id="sponsors-heading">Sponsors</h4>' +
+      '<div class="sponsors-grid" role="list">' + sponsors + "</div></section>" +
       '<div class="foot-bar">' +
       "<span>&copy; " +
       new Date().getFullYear() +

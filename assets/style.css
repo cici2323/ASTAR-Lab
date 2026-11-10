@@ -1075,39 +1075,37 @@ p a:not(.btn):hover {
   display: inline-flex;
 }
 
-/* two-column editorial text */
+/* Overview: original section label and site body typography. */
 .duo {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   gap: 40px;
+  align-items: start;
 }
-.duo-body {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
+.overview-copy p {
+  color: var(--ink-2);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  text-align: justify;
+  text-align-last: left;
 }
-.duo-body .fore {
-  font-family: "Newsreader", serif;
-  font-size: clamp(21px, 2.1vw, 27px);
-  line-height: 1.34;
-  letter-spacing: -0.015em;
-}
-.duo-body .fore em {
-  font-style: italic;
-  color: var(--accent-ink);
-}
-.duo-body p + p {
+.overview-copy p + p {
   margin-top: 16px;
 }
-.duo-body .rest p {
-  color: var(--ink-2);
-  font-size: 16px;
+.overview-copy strong {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.overview-name {
+  white-space: nowrap;
 }
 
 /* --- spec table (replaces stat tiles) ---------------------------------- */
 .specs {
   border-top: 1px solid var(--line);
-  margin-top: 64px;
+  margin-top: 40px;
 }
 .spec {
   display: grid;
@@ -1287,6 +1285,79 @@ p a:not(.btn):hover {
 }
 .ex-panel p + p {
   margin-top: 14px;
+}
+
+/* Research details: shared image with a speech bubble for each area. */
+.ex-stage--research {
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 435 / 271;
+  min-height: 0;
+  border: 4px solid #fff;
+  background: #102833 url("research_sec.jpg") center / cover no-repeat;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.ex-stage--research::before {
+  z-index: 1;
+}
+.ex-stage--research .ex-panel {
+  padding: 12px 20px 32px;
+}
+.ex-stage--research .label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.ex-stage--research .ex-panel p {
+  position: relative;
+  width: 78%;
+  padding: 6px 12px;
+  border: 2px solid #163643;
+  border-radius: 18px;
+  background: #fff;
+  color: #16151a;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(20px, 1.75vw, 22px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.ex-stage--research .ex-panel p::before,
+.ex-stage--research .ex-panel p::after {
+  content: "";
+  position: absolute;
+  left: 26%;
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 14px solid #163643;
+  bottom: -14px;
+}
+.ex-stage--research .ex-panel p::after {
+  border-top-color: #fff;
+  bottom: -11px;
+}
+.ex-stage--research .ex-panel em {
+  color: #4b2fe0;
+  font-weight: 500;
+}
+@media (max-width: 620px) {
+  .ex-stage--research {
+    min-height: 360px;
+    background-size: 100% auto;
+    background-position: center bottom;
+  }
+  .ex-stage--research .ex-panel {
+    padding: 12px 12px 32px;
+  }
+  .ex-stage--research .ex-panel p {
+    width: 94%;
+    font-size: 20px;
+    line-height: 1.12;
+  }
 }
 .ex-fig {
   margin: 0 0 22px;
@@ -2077,9 +2148,11 @@ p a:not(.btn):hover {
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 44px;
 }
-.foot-brand {
+.foot-brand,
+.foot-sponsors h4 {
   font-family: "Newsreader", serif;
   font-size: clamp(34px, 4.6vw, 58px);
+  font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1;
 }
@@ -2118,13 +2191,114 @@ p a:not(.btn):hover {
   color: var(--accent-ink);
   padding-left: 5px;
 }
+.foot-sponsors {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.95fr) minmax(0, 1.6fr);
+  gap: 56px;
+  align-items: center;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.foot-sponsors h4 {
+  margin: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 36px;
+  width: 100%;
+  background: var(--paper);
+  isolation: isolate;
+}
+.sponsor-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: auto;
+}
+.sponsor-logo img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 90px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.sponsor-logo--nsf img,
+.sponsor-logo--nvidia img {
+  width: 340px;
+}
+.sponsor-logo--nsf img {
+  max-height: 100px;
+}
+.sponsor-logo--syracuse img,
+.sponsor-logo--nyserda img {
+  width: 235px;
+}
+.sponsor-logo--openai img {
+  width: 200px;
+}
+.sponsor-logo--ny-smart img {
+  width: 235px;
+  height: 80px;
+  object-fit: cover;
+}
+[data-theme="dark"] .sponsors-grid {
+  padding: 16px 24px;
+  border-radius: 4px;
+  background: #f8f7f3;
+}
+@media (max-width: 900px) {
+  .foot-sponsors {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+@media (max-width: 620px) {
+  .foot-sponsors {
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+  .sponsors-grid {
+    gap: 6px 24px;
+  }
+  .sponsor-logo img {
+    max-height: 76px;
+  }
+  .sponsor-logo--ny-smart img {
+    height: auto;
+    aspect-ratio: 2.7;
+  }
+  [data-theme="dark"] .sponsors-grid {
+    padding: 16px;
+  }
+}
+@media (max-width: 460px) {
+  .sponsors-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sponsor-logo--nsf img,
+  .sponsor-logo--nvidia img {
+    max-height: 90px;
+  }
+  .sponsor-logo--ny-smart img {
+    height: 80px;
+    aspect-ratio: auto;
+  }
+}
 .foot-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 56px;
+  margin-top: 32px;
   padding-top: 22px;
   border-top: 1px solid var(--line);
   font-family: "IBM Plex Mono", monospace;
@@ -2555,9 +2729,8 @@ p a:not(.btn):hover {
   .plate {
     max-width: 420px;
   }
-  .duo-body {
-    grid-template-columns: 1fr;
-    gap: 22px;
+  .overview-copy p {
+    text-align: left;
   }
   .spec {
     grid-template-columns: 1fr auto;
