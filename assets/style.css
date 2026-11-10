@@ -1053,7 +1053,8 @@ p a:not(.btn):hover {
 .sec-head .sh-side {
   padding-top: 8px;
 }
-.sec-head h2 {
+.sec-head h2,
+.foot-sponsors h4 {
   font-family: "Newsreader", serif;
   font-weight: 400;
   font-size: clamp(30px, 3.6vw, 46px);
@@ -1102,7 +1103,7 @@ p a:not(.btn):hover {
   white-space: nowrap;
 }
 
-/* A compact statement of the lab's philosophy between overview and research. */
+/* A compact statement of the lab's philosophy before the sponsors. */
 .section.motto-section {
   padding: 56px 0;
 }
@@ -2234,7 +2235,7 @@ p a:not(.btn):hover {
    ========================================================================== */
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 72px 0 34px;
+  padding: 56px 0 34px;
   position: relative;
   z-index: 2;
 }
@@ -2242,9 +2243,11 @@ p a:not(.btn):hover {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 44px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
 }
-.foot-brand,
-.foot-sponsors h4 {
+.foot-brand {
   font-family: "Newsreader", serif;
   font-size: clamp(34px, 4.6vw, 58px);
   font-weight: 400;
@@ -2291,9 +2294,6 @@ p a:not(.btn):hover {
   grid-template-columns: minmax(240px, 0.95fr) minmax(0, 1.6fr);
   gap: 56px;
   align-items: center;
-  margin-top: 36px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
 }
 .foot-sponsors h4 {
   margin: 0;
@@ -2356,9 +2356,12 @@ p a:not(.btn):hover {
   }
 }
 @media (max-width: 620px) {
-  .foot-sponsors {
+  .site-footer {
+    padding-top: 40px;
+  }
+  .foot-grid {
     margin-top: 32px;
-    padding-top: 24px;
+    padding-top: 28px;
   }
   .sponsors-grid {
     gap: 6px 24px;

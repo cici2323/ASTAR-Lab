@@ -31,7 +31,7 @@ var SITE = {
       { name: "Syracuse University", image: "logo/SU_logo.jpeg", key: "syracuse" },
       { name: "NVIDIA Academic Grant Program", image: "logo/nvidia_logo.jpg", key: "nvidia" },
       { name: "NYSERDA", image: "logo/NYSERDA_logo.svg", key: "nyserda" },
-      { name: "OpenAI", image: "logo/openai_logo.jpg", key: "openai" },
+      { name: "OpenAI", image: "logo/openai_logo.svg", key: "openai" },
       { name: "NY SMART I-Corridor", image: "logo/NYTHRIVE_logo.png", key: "ny-smart" },
     ],
     address: [
@@ -184,6 +184,9 @@ var SITE = {
 
     host.innerHTML =
       '<div class="wrap">' +
+      '<section class="foot-sponsors" aria-labelledby="sponsors-heading">' +
+      '<h4 id="sponsors-heading">Sponsors</h4>' +
+      '<div class="sponsors-grid" role="list">' + sponsors + "</div></section>" +
       '<div class="foot-grid">' +
       "<div>" +
       '<div class="foot-brand">' +
@@ -212,9 +215,6 @@ var SITE = {
       "</p>" +
       "</div>" +
       "</div>" +
-      '<section class="foot-sponsors" aria-labelledby="sponsors-heading">' +
-      '<h4 id="sponsors-heading">Sponsors</h4>' +
-      '<div class="sponsors-grid" role="list">' + sponsors + "</div></section>" +
       '<div class="foot-bar">' +
       "<span>&copy; " +
       new Date().getFullYear() +
