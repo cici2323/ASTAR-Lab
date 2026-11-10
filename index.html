@@ -50,7 +50,7 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter:wght@300..600&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/style.css?v=48" />
+    <link rel="stylesheet" href="assets/style.css?v=49" />
   </head>
   <body>
     <div id="site-header"></div>
@@ -300,127 +300,67 @@
             <div class="sh-side"><span class="label">Recent</span></div>
             <div>
               <h2>News</h2>
-              <p>Grants, papers and people. Click a line to read more.</p>
+              <p>Selected highlights and milestones from A-STAR</p>
               <a class="btn line sh-link" href="news.html"
                 >Full archive <span class="arw">&rarr;</span></a
               >
             </div>
           </div>
 
-          <!-- Auto-filled from news.html at load; the entries below are the fallback
-               shown if that fetch fails (e.g. opened over file://). -->
-          <div
-            class="idx reveal"
-            data-news-feed="news.html"
-            data-news-count="3"
-          >
-            <div
-              class="idx-row"
+          <!-- Manually selected highlights; each row links to more information. -->
+          <div class="idx reveal">
+            <a
+              class="idx-row idx-row--link"
+              href="https://news.syr.edu/2026/08/05/developing-humanoid-robot-that-learns-construction-skills-from-human-workers/"
               data-search="humanoid learning from workers"
               data-group="News"
               data-kind="news"
               data-sub="Aug 2026"
             >
-              <span class="when">Aug 2026</span>
+              <span class="when">Feature 01</span>
               <h3>
-                Our Humanoid Robotics Research Featured by Syracuse University
-                Today
+                A-STAR Lab Humanoid Robotics Research Featured by Syracuse
+                University Today
               </h3>
               <span class="tail"
-                >Paper<span class="toggle" aria-hidden="true"></span
+                >Lab<span class="news-arrow" aria-hidden="true">&rarr;</span
               ></span>
-              <div class="idx-body">
-                <div>
-                  <p>
-                    <em>Syracuse University Today</em>
-                    featured A-STAR Lab's recent research on humanoid robots
-                    learning construction skills from human workers. The story
-                    highlights our vision-based perception-and-action framework
-                    and its demonstration across 30 construction skills and
-                    tasks learned directly from human demonstrations.
-                  </p>
-                  <div class="links">
-                    <a
-                      href="https://news.syr.edu/2026/08/05/developing-humanoid-robot-that-learns-construction-skills-from-human-workers/"
-                      >News Source</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
+            </a>
 
-            <div
-              class="idx-row"
-              data-search="NVIDIA academic grant"
+            <a
+              class="idx-row idx-row--link"
+              href="news.html#timeline"
+              data-search="three new funding supports summer 2026"
               data-group="News"
               data-kind="news"
-              data-sub="Dec 2025"
+              data-sub="Summer 2026"
             >
-              <span class="when">Dec 2025</span>
-              <h3>Selected for the NVIDIA Academic Grant Program</h3>
+              <span class="when">Feature 02</span>
+              <h3>
+                A-STAR Lab Secures Three New Funding Supports in Summer 2026
+              </h3>
               <span class="tail"
-                >Grant<span class="toggle" aria-hidden="true"></span
+                >Grant<span class="news-arrow" aria-hidden="true">&rarr;</span
               ></span>
-              <div class="idx-body">
-                <div>
-                  <p>
-                    A-STAR Lab was selected for the
-                    <em>NVIDIA Academic Grant Program</em> for our
-                    roof-inspection robotics project. The award provides three
-                    RTX PRO 6000 Blackwell Max-Q Workstation Edition GPUs and
-                    two Jetson AGX Orin Developer Kits to support research on
-                    aerial robots with ground mobility and perception.
-                  </p>
-                </div>
-              </div>
-            </div>
+            </a>
 
-            <div
-              class="idx-row"
+            <a
+              class="idx-row idx-row--link"
+              href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2525502&amp;HistoricalAwards=false"
               data-search="NSF foundational research in robotics aerial legged"
               data-group="News"
               data-kind="news"
               data-sub="Oct 2025"
             >
-              <span class="when">Oct 2025</span>
+              <span class="when">Feature 03</span>
               <h3>
-                A-STAR Lab Receives NSF FRR Award for Our Autonomous Roof
-                Inspection Project
+                A-STAR Lab Receives NSF Foundational Research in Robotics
+                (FRR) Award
               </h3>
               <span class="tail"
-                >Grant<span class="toggle" aria-hidden="true"></span
+                >Grant<span class="news-arrow" aria-hidden="true">&rarr;</span
               ></span>
-              <div class="idx-body">
-                <div>
-                  <p>
-                    A-STAR Lab and collaborators received a $700K award from the
-                    <em
-                      >National Science Foundation (NSF) Foundational
-                      Research</em
-                    >
-                    in Robotics (FRR) program for the project
-                    <em
-                      >”Endowing Aerial Robots with Ground Mobility and
-                      Multimodal Perception for Autonomous Roof Inspection.“</em
-                    >
-                    The project will develop an aerial-legged robotic platform
-                    that combines flying and walking capabilities with
-                    multimodal perception to enable safe and autonomous roof
-                    inspection in complex environments.
-                  </p>
-                  <div class="links">
-                    <a
-                      href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2525502&HistoricalAwards=false"
-                      >View NSF Award (ECCS-2525502)</a
-                    >
-                    <a
-                      href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2525503&HistoricalAwards=false"
-                      >View NSF Award (ECCS-2525503)</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
@@ -453,6 +393,6 @@
     </main>
 
     <div id="site-footer"></div>
-    <script src="assets/site.js?v=44"></script>
+    <script src="assets/site.js?v=45"></script>
   </body>
 </html>

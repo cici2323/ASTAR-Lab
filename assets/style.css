@@ -1562,6 +1562,19 @@ p a:not(.btn):hover {
   align-items: center;
   gap: 10px;
 }
+.idx-row--link .news-arrow {
+  display: inline-block;
+  width: 22px;
+  color: var(--accent);
+  font-size: 20px;
+  line-height: 1;
+  text-align: center;
+  transition: transform 0.25s var(--ease-out);
+}
+.idx-row--link:hover .news-arrow,
+.idx-row--link:focus-visible .news-arrow {
+  transform: translateX(3px);
+}
 .idx-row .toggle {
   width: 22px;
   height: 22px;

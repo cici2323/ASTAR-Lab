@@ -267,12 +267,14 @@ var SITE = {
 
     $$("[data-search]").forEach(function (row) {
       var h = $("h3", row) || $("h2", row);
+      var href = row.tagName === "A" ? row.getAttribute("href") : null;
       items.push({
         group: row.getAttribute("data-group") || "Entries",
         label: h ? h.textContent.trim() : row.getAttribute("data-search"),
         sub: row.getAttribute("data-sub") || "",
         kind: row.getAttribute("data-kind") || "item",
-        node: row,
+        go: href,
+        node: href ? null : row,
       });
     });
 
@@ -632,7 +634,7 @@ var SITE = {
 
   /* -------------------------------------------------------------- accordion */
   function bindAccordion(row) {
-    if (!$(".idx-body", row) || row.hasAttribute("data-acc")) return;
+    if (row.tagName === "A" || !$(".idx-body", row) || row.hasAttribute("data-acc")) return;
     row.setAttribute("data-acc", "");
     row.setAttribute("tabindex", "0");
     row.setAttribute("role", "button");
@@ -656,43 +658,6 @@ var SITE = {
 
   function initAccordion() {
     $$(".idx-row").forEach(bindAccordion);
-  }
-
-  /* -------------------------------------------------------------- news feed */
-  /* The home page teaser mirrors the top entries of news.html, so the two can
-     never drift. The markup already in the page is the fallback: if the fetch
-     fails (opened over file://, offline) it simply stays.                    */
-  function initNewsFeed() {
-    var host = $("[data-news-feed]");
-    if (!host || typeof window.fetch !== "function") return;
-
-    var src = host.getAttribute("data-news-feed") || "news.html";
-    var want = parseInt(host.getAttribute("data-news-count"), 10) || 3;
-
-    fetch(src, { cache: "no-cache" })
-      .then(function (r) {
-        if (!r.ok) throw new Error(r.status);
-        return r.text();
-      })
-      .then(function (html) {
-        var doc = new DOMParser().parseFromString(html, "text/html");
-        var rows = $$("#newsList .idx-row", doc).slice(0, want);
-        if (!rows.length) return;
-
-        host.innerHTML = "";
-        rows.forEach(function (r) {
-          var copy = r.cloneNode(true);
-          copy.classList.remove("open");
-          copy.removeAttribute("style");
-          copy.removeAttribute("data-acc");
-          host.appendChild(copy);
-          bindAccordion(copy);
-        });
-        initPhotos();
-      })
-      .catch(function () {
-        /* keep whatever is already in the page */
-      });
   }
 
   /* ---------------------------------------------------------------- filters */
@@ -1296,7 +1261,6 @@ var SITE = {
   initAccordion();
   initFilters();
   initCopy();
-  initNewsFeed();
   initPhotos();
   initLogos();
   initGallery();
